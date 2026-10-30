@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="pl"><head><meta charset="utf-8"><meta name="barinc-build" content="6.0"><link rel="manifest" href="./manifest.webmanifest"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="theme-color" content="#151b24"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><meta name="apple-mobile-web-app-title" content="Bar Inc. BETA"><link rel="apple-touch-icon" sizes="180x180" href="../icons/icon-180.png"><link rel="icon" type="image/png" sizes="192x192" href="../icons/icon-192.png"><link rel="icon" type="image/png" sizes="512x512" href="../icons/icon-512.png"><title>Bar Inc. 6.0 BETA — Pixel Tycoon</title>
+<style>
+:root{--bg:#10141c;--paper:#1d2630;--paper2:#252f3a;--paper3:#303b44;--wood:#64452e;--edge:#4c5963;--white:#f4ebd6;--muted:#abb2b6;--gold:#f2c66c;--mint:#93d9a9;--red:#f49c85;--blue:#92bfd4;--shade:#0c111a}
+*{box-sizing:border-box}html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}body{margin:0;background:radial-gradient(ellipse at 50% -20%,#253041 0,#111720 52%,#0b1017 100%);color:var(--white);font:14px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif}button,input,textarea{font:inherit}button{touch-action:manipulation;cursor:pointer}button:disabled{cursor:not-allowed;opacity:.45}button:focus-visible,input:focus-visible{outline:2px solid var(--gold);outline-offset:2px}.game{max-width:1320px;margin:auto;min-height:100vh;display:grid;grid-template-columns:192px minmax(0,1fr);gap:22px;padding:24px}.side{background:linear-gradient(180deg,#222c33,#161d27);border:3px solid #3b4550;box-shadow:5px 5px 0 #0c121b;position:sticky;top:24px;height:calc(100vh - 48px);max-height:800px;display:flex;flex-direction:column;padding:18px 11px;gap:18px}.logo{text-align:center;padding:9px 5px 17px;border-bottom:2px dashed #48525a}.logo-icon{display:inline-flex;justify-content:center}.logo-name{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:30px;letter-spacing:-2px;line-height:1.15;font-weight:1000;color:var(--gold);text-shadow:3px 3px #4c3428;margin:4px 0 2px}.logo-sub{font-family:monospace;color:var(--muted);letter-spacing:1.8px;font-size:10px}.nav{display:grid;gap:9px}.navbtn{background:transparent;border:2px solid transparent;color:#b7c0be;display:flex;align-items:center;gap:10px;padding:11px 10px;text-align:left;font-weight:850;min-height:49px}.navbtn.active{background:#4b3d31;border:2px solid #91714a;color:#ffdaa0;box-shadow:3px 3px #111923}.navbtn:hover:not(.active){background:#303d42}.navicon{width:30px;flex-shrink:0}.navbtn.locked{opacity:.6}.side-foot{margin-top:auto;color:var(--muted);font-size:11px;line-height:1.8;padding:14px 8px 0;border-top:2px dashed #46505b}.main{min-width:0}.top{display:flex;justify-content:space-between;align-items:center;gap:14px;margin-bottom:16px}.top-title{margin:0;font-size:clamp(24px,3.4vw,35px);font-weight:950;letter-spacing:-1px;font-family:ui-monospace,Menlo,Consolas,monospace}.eyebrow{color:var(--gold);letter-spacing:1.8px;font:800 10px ui-monospace,monospace;text-transform:uppercase}.status{display:flex;align-items:center;gap:9px;flex-wrap:wrap}.pill{border:1px solid #56636b;background:#293740;color:#ddd9ca;padding:5px 9px;font-size:11px;font-weight:800;display:inline-flex;align-items:center;gap:4px}.pill.gold{color:#f8d9a1;background:#423626;border-color:#877042}.pill.green{color:var(--mint);background:#254035;border-color:#4b7659}.pill.red{color:#ffb6a2;background:#51382f;border-color:#925c4c}.small{font-size:12px;color:var(--muted)}.tiny{font-size:10px;color:var(--muted)}.stats{display:grid;grid-template-columns:1.6fr 1fr 1fr;gap:12px;margin-bottom:13px}.stat,.panel,.goal{border:2px solid #3f4c58;background:var(--paper);box-shadow:4px 4px 0 #0b1119}.stat{padding:15px 16px;min-width:0}.stat:first-child{background:#312c2b;border-color:#7c6143}.label{color:#b6b9ae;font-size:10px;letter-spacing:1.5px;font-weight:900;text-transform:uppercase}.big-number{font-size:clamp(22px,2.6vw,32px);font-weight:950;color:#ffe0a0;line-height:1.2;margin:5px 0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.stat-value{font-size:23px;font-weight:900;margin:6px 0 4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.panel{padding:18px;min-width:0;margin-bottom:14px}.panel.warm{background:#2b292a;border-color:#6b5543}.section-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:0 0 12px}.section-head h2{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:16px;letter-spacing:-.5px;margin:0;line-height:1.35}.section-head h3{font-size:14px;margin:0}.action{border:2px solid #88714c;background:#cba162;color:#211c1a;box-shadow:3px 3px 0 #35261d;padding:11px 14px;font-weight:900;min-height:45px;line-height:1.2}.action:hover:not(:disabled){filter:brightness(1.12)}.action:active:not(:disabled){transform:translate(2px,2px);box-shadow:1px 1px #35261d}.action.secondary{border-color:#657786;background:#344553;color:#edf4ed;box-shadow:3px 3px #131923}.action.blue{border-color:#689bb0;background:#396879;color:#e8fbff;box-shadow:3px 3px #172634}.action.danger{border-color:#976b65;background:#613f42;color:#ffe0d4;box-shadow:3px 3px #231517}.action.smallbtn{min-height:36px;padding:7px 10px;font-size:11px;box-shadow:2px 2px #131923}.action.wide{width:100%}.cols{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(285px,.86fr);gap:14px}.stack{display:grid;gap:14px;align-content:start}.goal{background:#302d2b;border-color:#665944;padding:13px 15px;margin-bottom:15px}.goal-title{display:flex;gap:7px;align-items:center;color:#f7d18c;font-weight:900;font-size:12px}.goal-body{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:6px}.goal strong{font-size:14px}.progress{height:9px;background:#35414a;box-shadow:inset 1px 1px #0a1018;margin:11px 0 5px;overflow:hidden}.fill{height:100%;background:#d8ac69;min-width:0;transition:width .3s}.fill.greenfill{background:#72c59e}.fill.redfill{background:#d88377}.goal-meta{display:flex;justify-content:space-between;font-size:10px;color:#c2bcaa}.scene{width:100%;aspect-ratio:16/9;border:3px solid #806547;background:#2e343c;overflow:hidden;position:relative;image-rendering:pixelated}.scene canvas{display:block;width:100%;height:100%;image-rendering:pixelated}.scene-corner{position:absolute;top:8px;left:8px;background:#1b2528de;border:1px solid #76827d;color:#f9e4b5;padding:4px 8px;font:800 10px monospace;pointer-events:none}.scene-bottom{display:flex;gap:10px;align-items:center;justify-content:space-between;margin-top:11px;flex-wrap:wrap}.row{display:flex;align-items:center;justify-content:space-between;gap:10px}.minirow{display:flex;align-items:center;gap:10px}.queue-pips{display:flex;align-items:center;gap:4px}.pip{width:7px;height:7px;background:#8bcda6;border:1px solid #3c6f58}.pip.warn{background:#e5b36e;border-color:#937044}.pip.bad{background:#e18b79;border-color:#956053}.metric-row{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:12px 0}.metric{padding:10px;background:#26323b;border:1px solid #40505c}.metric strong{display:block;font-size:20px;color:#f0dec2}.metric small{font-size:10px;color:#b2b9b8}.hint{padding:11px 12px;border-left:4px solid #cea766;background:#3a3734;font-size:12px;color:#f4e9d4;margin:10px 0;line-height:1.55}.hint.greenhint{border-color:#67af85;background:#273e35}.hint.warning{border-color:#c5856c;background:#403237}.upgrade{display:flex;align-items:center;gap:9px;border-bottom:1px solid #34414b;padding:11px 0}.upgrade:last-child{border-bottom:0}.upgrade .copy{flex:1;min-width:0}.upgrade strong{display:block;font-size:12px;color:#f0e8d7}.upgrade p{font-size:10px;color:#aab6b8;margin:3px 0 0}.upgrade button{white-space:nowrap;flex-shrink:0}.pixel{display:inline-block;width:40px;height:40px;flex:0 0 40px;background-image:url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAwAAAAMACAYAAACTgQCOAAA2kElEQVR4nO3df6xe9X0f8MuP/FNYkywaaGmZTDoRF4nMnrWajBRVTqwuIUAZCo4UaZWTTAsyTCnBtQty5cSCmZrQasSCaklQKyFhKpYmqZNVTlFEywqdPLuNRAnKwBrTpFClCRl0qsKP/XHF5Xi+33vPec73nO/3nM/r9dejJ89zzud+n3Of6y+fdz5naQkAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAOjsrNIFAMD/b+OGTa/nPubTp076m9eS9S/L+jO0s0sXAAAAjMcGAAAAAjm3dAEAsJbjR65Y+L1bdjyesZKYrH9Z1p8h6AAAAEAgNgAAABCICBAAAJPXdXpSajJSruMMfcw+dAAAACAQGwAAAAhEBIhB/Oj7J7LcxORtF2524xIAgIx0AAAAIBAbAAAACKRYBEhEBACAIRz7/DtWfX77Z35Q5DhDH7MrHQAAAAjEBgAAAAIxBYheckW5+hy/hhjYl/7qu4OuQ20+8Z53F1/zJus/P6ffBOeKhT/foW+mM1fWvyzrz9B0AAAAIBAbAAAACGTwCJCIyDhMVQKmaOOGTet+d23Z8figx48ck7D+ZVl/StEBAACAQGwAAAAgEFOA6KxNS3FMzXpqaGUeumZH6RJCs/7Tlbo5zhDGvOHOVOz+2pHRzuX39Ey/c9Vro53r00f999/oXAEAABCIDQAAAAQySARIRGQ4NUxVunzrziFLmKTmjZlqu/4jsP7z87Pvv2XV5//Xn9wzciUxffyffG/V57/8P//pyJXE9Mt3/IdVn//j239j5EqYKx0AAAAIxAYAAAACMQUIMmvGzOYUR5lKfM76A8DadAAAACAQGwAAAAhEBGgC5hRjGFqbtaohSvH17zxWuoSkqy+7snQJgxvzhjtduUEPwLI+//5pc7O/NsfPdZyhj5mS+jePvzQAABCIDQAAAAQSLgI0lYjIVDRvCnbs8+9Y9TUXXPLzqz7/wjN/vfB5U+2zr97+rlWfv/aOZxc+15j+0d/9j1Wf/5uf+rmRK4np8t/8vVWff+JzvzpyJQAwHB0AAAAIxAYAAAACGTwCJCICQBv/4H13rzx+8e/Xf00/O9d/STDXX/h3K49f/Pt3rvuaPg5lOcq8NCOIqes/FVPs7Oi0r//9V51f5LyPPfXjdV9z5aU/PUIlZ9p/9KVOr9cBAACAQGwAAAAgkHBTgGBMzYlSzQlUzZtt1XBTsNTNv6Y+ESu1/s2bbdVwU7DUzb+mvv65vOXUFxd+7082fDJjJTHt+8r6Ny1KOXDd6tFf2nP9MwQdAAAACMQGAAAAAhEBmpjapioBAIypzTSeUsrV1u2/6esAAABAIDYAAAAQiA0AAAAEYgMAAACB2AAAAEAgpgAxK9fe8WzpEpJSN6Vq+puf+rnxCkqY682n2qz/E5/71fEKSpjr+vfhZkZluZlXWa7/M1156U8XOW+bCT+lanv0uZc6vV4HAAAAArEBAACAQMJFgGqOiMxVnxuQRXD1ZVeuPP76dx4rct7IPn30zf8O8jtXvVbkvCz7P392a+kSQnvk+z9VuoTQxo0gzv/7Z/OmC7Ifs00EaIjznjj5QvZjzv8KAAAAVtgAAABAIFVEgEREyMUEFQCAtekAAABAIDYAAAAQSBURoDGJiAAAzNsQk3NqPm9XOgAAABCIDQAAAAQSLgIUQampSts/84Mi552iZhRt44ZNr7/xuNTNuaJF41LrX+rmXNHWH4CydAAAACAQGwAAAAhk1AiQiAgAAJSlAwAAAIHYAAAAQCCmANGL6SX9pdbwS0ceeX2153P5xI7rfXZL1r8mYqJlHbpmR+kSQis1hWyK9h99qdCZ1/+MHn2uVG3duNoAACAQGwAAAAhkkAiQWMg4tMsBAOhKBwAAAAKxAQAAgEB6RXUu3bBlV65CpuypU8cPD3n8jRs2DTqNpI+zl865qXQNQ69/iut/mfUvy/qXZf3Lsv5lWf+y+qy/DgAAAARiAwAAAIG4EdgEpKYqaYEBANCVDgAAAARiAwAAAIHYAAAAQCA2AAAAEIgNAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAANTqrdAEAADAlGzdsev2Nx0+fOjm5f0+fXboAAABgPDYAAAAQyCAti2ZbZE6m2OIBAKC/Nv++ncq/FXUAAAAgEBsAAAAI5NxSJ/7q7e9a9zXX3vFslnNtu/i1dV/z6HP2QktLS0svP7krS3zrvK2HJ9ECA+o3p7Y7MC1dY+1TmQ7kX70AABCIDQAAAAQyagRo/1XnD/r6lMee+nGnc+0/+lKW8wIwjh99/8RK2/1tF26utu0ObeSaplhzBKVmzfX/5g0fWvg4H3x4qdo4kA4AAAAEYgMAAACBFJsCBABDEAdiKoa+cWrq+LXFUWow5mdRw/rrAAAAQCA2AAAAEIgIEACzJQ5EbdpETTbfe0uWc524+Z51a6ghjlLK0LGfNucttf46AAAAEIgNAAAABDJ4BGj3XftWHr/c/B9+/OC67335yl/LU8RTn+10rt1Xvvn8oT0H8tTQQ6kWVR+11Ry5xQksm2IcqLbv0imq4fs/9Tlec9+HE+94ZtVnn3/lkk7nTUWJmtGgGuIoY6rtd6rU+usAAABAIDYAAAAQiClAAIQzxTgQ05KKmpwey1k96jO0Zg2R40BNTzz5QP5jfuYjqz5/+dad2c/VlQ4AAAAEYgMAAACBiABNWHPCUi4PncpznN13bctzoBZqmNQETNcU40Db995duoQqHDt4a+kSTtMu9lMXcaCYdAAAACAQGwAAAAhk8AhQM56x/6rz3/wfNl2w7nvPe+y3hyhp3XPtP/rSaOfN5coPbS9dwqge+8ax0c5V201DhlBze9f6w9o2/cuLSpcwqpP/9fnSJfTyxQue7PHuPu9d3Sdf2Jr9mNRPBwAAAAKxAQAAgEBMAYIFnRZpm4gpxttSvnnDh0qX0NkHH/5G6RJYxxQnAqUcumbHyuPdXzsy+/eW8vKTu1rEFPNHd3I5LZJ05IrEq65Y+RnP23p40r8XXe37yg8Wfu+B696RsZK8dAAAACAQGwAAAAhEBAgAVjGnOBD9tYv6rK+2qTtdpxKl1iFaNGjqdAAAACAQGwAAAAhEBGgmxrwxFkA0NceB2twYq8/Ns6b43lzaxH627Hh81ec333tL9nrauOjcZzq9/rN/+/aVx8+/csnK4xM337Pq648nJgU110ocqH46AAAAEIgNAAAABCICNEMnf/jW0iUMYtPbXyxdwiS1ufnXxg2bsky3SHn61Mmw7eA2N/+y/tNScxyI/rpOuRn697c2qXVorps4UP10AAAAIBAbAAAACEQECILavvfu7Mc8dvDW7Mecqwjr3+fGSVOJDYgDzYObW/XXXKtcN01jODoAAAAQiA0AAAAEIgIEwOSJ30Cdpj4R6MB17yhdwiB0AAAAIBAbAAAACEQEaIbcMAvoI9eNjbbseHy0Gmq+GZMbsdUvNcGmTXyl+fk2r8MTN9+z8prN996Ssdq1Pf/KJQu/t1lzU5tr2CSladEBAACAQGwAAAAgkMEjQLvv2rfy+OXm//DjB9d978tX/lqeIp76bKdz7b7yzecP7TmQpwaAiUhFGmhP7Ge62sSBUq+PoM1NvqKtyRTpAAAAQCA2AAAAEIgpQFDA/qMv5TnOVednOc6xg7dmOc5UfPDhb2Q5zjdv+FCW49S8/l3jQLmuydrk+p1lWlJxoKY2kZilpSdXHn3yha0rjy8695k+5a3oM/nnixe8WdvSkSsSr7pC7GdmdAAAACAQGwAAAAhEBAgWlCsS0JyU1UZzMlWfGlKxkz71jClXjKfPz9unhimuv+lAa6tt8s/2vXeHeu/QUhGXdhGgN50WuclmiGOubq5Rn7ec+mLpEkalAwAAAIHYAAAAQCCDR4BOiys0p0NsumDd95732G8PUdK655rKtIeurf9tF7/W6fWPPjfe/rDm2gBq03VyVM3fsTXX1kbXSEzXyNDQ5hrpaeN4curReOfdsuPxIjXU9VsEAAAMygYAAAACMQUI1jHEZI9cE1Ry1VZbPUMfs7aft7Z6up6rWf9UIpS51Db5h/o1Izelpmm5btEBAACAQGwAAAAgEBGgCcjVqtt28Xs6tRrHbBHWXBuwNjcIG47v/zPN6fs/9bNMMRY4FaUm/6Q06zlv68nRzqsDAAAAgdgAAABAIKNGgJrTIb7a4kZguaZJbLt4/ddEm1xBPbre0G1otdUztNp+3trq6SpCHEisgqG5xsbX5oZoXW/iljpmDTeD0wEAAIBAbAAAACCQXhGgSzds2bXa868tvbrue6+949k+p+7k0efy7HNSP+9Tp44fznKCjlL1pP1k4OP3sXht01n/N7X5HRm6hqZc9YzJ+pfV8me/afBCCpjm94/v/5zGXZ96TWX9/9uRy7/wxuN/seOJVb+Xcn2mzeOnjpmqoRkNSr2mqc/66wAAAEAgNgAAABDIIFOAzl46Z5Zt36n79nNvqfZzqbm2IdT2O9KnnlIt4D6sP9HU/B1bc23MQ5s4TdfjNGNFueSqsw0dAAAACMQGAAAAAhn1RmAAADAnY0Z3ctEBAACAQGwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACYrbNKF9DXd//Tv379jcfv/rf/efI/DwAADOns0gUAAADjsQEAAIBAJhOZaUZ9uhINWszGDZsWXvOmp0+dtP4AAJXQAQAAgEBsAAAAIJBzSxewlj6xn9RxxIEA2ssVBYxG9BGG43vpTF2/c3QAAAAgEBsAAAAIpIoIUK6oT59ziQat7evfeazT66++7MqBKgGAmJrRFzEz+tABAACAQGwAAAAgkGIRoDFjP22YFASwmCeefKB0CaO6fOvO0iUMzo0g6ycOtLbte+/u9PoD171joEra2/eVH6z6/LGDt2Y/lw4AAAAEYgMAAACBDB4Bqi3q04ZJQfTx8pO7JnfNd3Xe1sPV/i5Yf2hv6BsqpY4vstKem14xBB0AAAAIxAYAAAACGSQCNMXYTxsmBQEwdW0iJZvvvSXLuU7cfM+6NYgD9Wc9+0tN4KlhOtAQdAAAACAQGwAAAAikVwRorlGfNkwKAmjvh5//g9IltPL2z3ykdAmDSMV+rrnvw4l3PLPqs8+/ckmn86aiRM1okPjKmaY4+cfnOC06AAAAEIgNAAAABNIqAtRs63z19ncNV80MNKNB197x7Mrz2mEAjCkVIzk9lrN61GdozRqmEgeqrbbjR65Yebxlx+Mrj8esc4pRJZbpAAAAQCA2AAAAEEgyAhR5wk8up8el3uUmYgAMql3spy7iQGceM5ep1Mn4dAAAACAQGwAAAAgkGQFqxlRS7Z5tF782RE2T9uhzq++pamtfpqQ+66svuzL7MaeyJsA4hr4J11RuRsa0jBlVak7+ST3fnAiUS5vYz9T/ph+47h2lSxiVDgAAAARiAwAAAIG0uhEY81bq/9Ff84QHgKnoM/nn+VcuyV5PH1OcCNT08pO7VupsRnFSNY/597fNGqbqGTpixPh0AAAAIBAbAAAACEQECICq/cnH7ur0+vc/uGegSoisGZtpE905PTaztHCEKTX5p91514/rtIn9RLDvKz8oXcKodAAAACAQGwAAAAhkkAjQoYO/uPB7d+/904yVtNe15lJ15lJq8k/KVCY8ALC2i859ZuH31jaVKJdUHKirFx5567qvueD6F9d9jdgPOgAAABCIDQAAAARS9RSgR58bdn+y7eLXBj3+FLW5cUwuzZu8AMDUNafupOI0bab05Iri5DqXm3/Njw4AAAAEYgMAAACBVB0BIq/U/+t/zNhP6rzNOJCJQABE0PWmXUOctw9/o6dLBwAAAAKxAQAAgEBEgGautht+dSUOBLz/wT2lS4DBtYnltLnJV5/jR3Ps4K2lS0javvfuQY+vAwAAAIHYAAAAQCCTjADtv+r8bq8/+tJAlUxXavLPfb9w2brvvfEvvpO7nOREIADW1oxHNmOTze/SMae9Pf/KJQu/N/X9LwIKeekAAABAIDYAAAAQyCARoN17/3SIww5qijWnTH3yT4qJQDBvP/z8H5QuAbJp3tjrr0/eUbCSxfz8pttLl1CF3V87kv2Yh67Zkf2YXekAAABAIDYAAAAQyCSnAHGmNrGfNlMghpjw87lf+pVVn//Nb//hqs+3mQgkDgRwpq4TgS4695ks5402+Se1zjAVOgAAABCIDQAAAAQiAgQAM9QmDnTRfR8euaoza2iqOfbDMp/RPOgAAABAIDYAAAAQiAjQhOWa/DO01LSfNkwEgnl4+2c+UrqE0FJxoK/d+Eervj7X347U93ZThO9tN9WiNjoAAAAQiA0AAAAEIgI0c23arwDE0eYmVkP/7YgQ+2EeDl2zo3QJg9ABAACAQGwAAAAgEBGgiWkz+ScyE4EA2kt9T+b6WxPhezjCz8j86AAAAEAgNgAAABBIrwjQo8+V2T/sP/pSluOUqr8Prcb6nbf1sM+oIOs/vsu37ixdApn5WwPzNr1/AQMAAAuzAQAAgEBMAZqwSzds2VW6hho8der44RLntf7LrH9Zpdafslz/y3z/lFXz98+xg7eWLqGXoevXAQAAgEBsAAAAIJBWEaDUNAAtsGU1t8AAAKBJBwAAAAKxAQAAgEBMAQIgSQR0bSKgML6zl865qXQNNejz/aMDAAAAgdgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAwW2eVLoC6/Oj7J14vcd63XbjZtUhxrn9o7+b7v7Xy+3Lvpz7gGiaUqV//Z5cuAAAAGI8NAAAABDK5lgXDEoEgMtc/nKkZdehqitEIaJrr9a8DAAAAgdgAAABAINW2JsivVLwhFzEJ+nD9j2Pjhk2TXueUp0+dnMT659In9pBScxwCmiJc/zoAAAAQiA0AAAAEcm7pAgCI5au3v2vd11x7x7NZzvU7V7227ms+fTTufwsbIurQ9Vy1RSPmqhnPixZpS4l8/cf91gMAgIBsAAAAIBAtoEBMQSnr5g9smfT63/ut45Nef9f/OFJTgB7Y+e6Vx//wnT9Z9zh/+7/fkqWeF1/463Vf89YLfn7l8c4Hvrvqa+YUmRgz9tCVOFB/bSZxDX09N79va/vucv0v0wEAAIBAbAAAACAQU4AAYIZqjjqk1DYppTa13Wiv5mil639tOgAAABCIDQAAAAQiAgQAMzHF2EMbzZ8rQhyohqhP13hPDdN+XP/t6QAAAEAgNgAAABCICFAg+z72ydIlQDGu//HtvmvfyuOnGs+/78cPrvvepzbekKWGn3nhs53OtfuuN58/tOdAlhqGMNeoQxtTnxQ0dLzn+JErVh5v2fH4uq9vE/WpId7T5Po/U9frXwcAAAACsQEAAIBAWkWAavh/o0/R06dOVtUyA2Bamn9/t++9u2Qp1WtGI44dvHXl+VJ/i4f4t1Mz3jOE2qI+rv/2ul7/OgAAABCIDQAAAATSawrQV29/V646Ju3aO54tXQIAMxF5wkkuzbjI9qWl7DdRyhXvGTrS00ZtsR/Xf39trn8dAAAACMQGAAAAAnEjsECOfe/VVZ//8/s+PnIla3vvjV8uXcIgrH9Z1n98zRtpPbDz3W/+D+9c/72XPv1wlhpebPGa5rl2PvDdLOfto9mmT0VNmjdZY1nqxm2lpgDVEO+ZItf/Yrpe/zoAAAAQiA0AAAAEYgMAAACB2AAAAEAgNgAAABCIKUAkpaaRdJ2akus40Vj/sqw/AHOlAwAAAIHYAAAAQCAiQAAwEx/d8OjC733o1LaMlbTXteZSdVI/1397OgAAABCIDQAAAATSKwJ07R3PrvuabRe/tvDxH31uvP1Jnzrnuo/KNaXEtJPFWP+yrD+RHdpzYNDj775r36DHhz4iXP/z/JcrAACwKhsAAAAIxBQgAACWfvT9E68Pefy3Xbj5rCGPT3s6AAAAEIgNAAAABNIqAvT0qZMLt2y2XfyehdtJfc7b1VTq7Grjhk2DtvPG1PxZal7zJutflvUHgDPpAAAAQCA2AAAAEIgpQCy998Yvly4hNOtflvWH9vZfdX631x99aaBK6rdlx+Prvub4kStGqKQ9U3rWNqfrXwcAAAACsQEAAIBARIAAGMTuu/atPH6q8fz7fvzguu99auMNWWr4mRc+2+lcu+968/lDew5kqWFMD53aVrqEzqZYc2oS10O73tdp8tjXf/8vVx63iYvUFhmqzRSvpVI16wAAAEAgNgAAABCICFBQm++9pXQJrZy4+Z7SJQxi+967S5fQyrGDt5YuYRCuf2CKpjhZiDrpAAAAQCA2AAAAEIgIEABAYanJQhs3bOo0WahNTAh0AAAAIBAbAAAACEQECIBBNG+k9cDOd7/5P7xz/fde+vTDWWp4scVrmufa+cB3s5wXcklFg5q6xoRABwAAAAKxAQAAgEBEgAAAJkxMiK50AAAAIBAbAAAACEQECABg5trEhIhDBwAAAAKxAQAAgEBEgAAYXPMGW1+9/V2dXt/H71y1/mumePOv5k3WxrT/6EtZjlOqfubB9d+fDgAAAARiAwAAAIH0igBdumHLrvVf9ZOBj5/L4nWW0mZ9Xlt6dYxSRtf82Z86dfxw6RpSrP84NaRY/3FqaGqz5tfe8Wz2elI+fTTPf+dK/byl1p+yhvj3ybj/5snD9T9dOgAAABCIDQAAAAQy+BSgbz/3lpuGPkcOU6kzlxM331O6hNCOHby1dAmhuf6Hc/bSOaG+S4eWunnTFOMiQ6gtgvK5o//X9Z+R639tfa5/HQAAAAjEBgAAAAJxI7CZ044vy/qXZf0B4Ew6AAAAEIgNAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAs3VW6QKYto0bNr3+xuOnT510PQEAVO7s0gUAAADjsQEAAIBAzi1dwFqa8ZI+RFOYolzXf5Pfhfasf1m+/2HZl4480ul34RM7rnfNsy4dAAAACMQGAAAAAinWJhqivd6HNnF7bT4769leDb8LPq8zNT+X40euWPg4W3Y8vvLYOrcnAjScGr5zUiJ/Xl2jPl2JBtGkAwAAAIHYAAAAQCCjTgHq2nbs03ZvarbgU9zQajHNz6jNOkdWc9s9VZvfBWrw9e881un1V1925UCVTFfN3z9N0f4WDx37SZ1rinGgqVzDNWjzu6MDAAAAgdgAAABAIINHgNq0bHJFfboePxVZidaCZDi5WpZPPPnAwu+9fOvOhd/rdwGmK/X90zVSNaZmfGuu3z9jxn7a1DDFOBD96QAAAEAgNgAAABDIIBGgGmI/bbSZYDPXFmRXbW6KdPp6LoVdtz6xnz5Rn67H7BoN8rsA9Ut9/2zfe/fK4//44F+sPP73H/uF4YtaR7OeZp3HDt668tj3z7JUXKeGWFEp19z34dIlFPO1G/9o4ffqAAAAQCA2AAAAEEi2CNDQsZ/de/+00+sPHfzFTq8XB6KPrrGfIaI+XfWJBkX4XTj957pi4fb6XNeHeSgVB2qeN4I+EZ02U3qar+l6LhOBYtIBAACAQGwAAAAgkMFvBNY19tM16tP1OG2iQW3iQNBVDbGfNpp19rmJ2FS0iW/1+R5oc3wxIfpoM/mnjaHjQF1jP5EnAvWJ4vSJAxGHDgAAAARiAwAAAIH0igCl2o5DxH66TvVJHbP5fJ84UIQWZJubf6VEuClYnxt+9XHbR3913dfc+dDvjVDJsjn9Ltz5qS+Mdq7b7r9ptHMxP7liP1MROQ5EHLf98+tXHt/53x8Z9Fw6AAAAEIgNAAAABDL4FKCUrlN6furdH+p0/EMH1z9v1zgQdDWVyT8p0SYCNV33qRdXff4r97915Epg2Zixw1wTgca84Zc4EFPUjP2knh8iDqQDAAAAgdgAAABAIJ0jQLkm/0xRqYlApabNDKHUz5Lrc5nTZzEELXj6SP1+XX3ZldmPOZXrs813ztCTf7rGgYaO/aQmAjXV9l3U58ZeUzwva0vFftq8PlccSAcAAAACsQEAAIBARp0C1HXyzxCa55rKRKBm+3LMCEquWFcqOjW0Um3fqU/+SYk8EYjhlIrV1RYRSWnz/d+MwZSKA4057ScV+2mq+TMlpq6xnyZTgAAAgF5sAAAAIJBiNwJjMW3awTVPZMpVWypKpO0LzFXNcaChTTH2M6epcbWt7VTUFvtp0gEAAIBAbAAAACAQEaAJS7XktuxYWmk71hwH6qoZ+9GOZAjbdp638vjFvz8v8ZpMJ7s/03EmqLZoxFQmAnU1ZhxoCG1iP1CbmmM/TToAAAAQiA0AAAAEIgI0Q80W9tTjQGI/1OAtp7648Ht/suGTGSuZtzs/9YXRznXb/TeNdq4hlLpBZG2m+Heh5r/FY96sc0zNWM4QMZupxH6adAAAACAQGwAAAAhEBGjmphgHEvvp77aP/urC773zod/LWAksS8VUxoz9pM7bjANNcSJQbTcI62OKN/yiTqlYTq440BRjP006AAAAEIgNAAAABDJqBOjQwV9cebx775+u+rj5miE0z9U09HlrUHMcSOwH5mfq02nEgcYh9kMuXWM5XeNAXY9fQ9QnRQcAAAACsQEAAIBAOkeAUu3FZoSjhkjJEFI3yJh6a7LUZzfXG45cvnXnyuMnnnygYCV5NX+uaNzMK6/U5J9tO89b972PPvBy7nKSE4GmruY4kNjPYtr83Zzrv8HaaEZucsWB5hT7adIBAACAQGwAAAAgkGI3AmszEajp8Fc+1On4qeOkaohgKhM5ap680aalPrSab9RV2+fV1RDxkmim8j3TVc3fS23UEAcS+2FMueJAXc81FToAAAAQiA0AAAAE0isClGsiUCoO1LTrut9YrMg1ztXGXCf/NJWaGNA8r4lAdYo8+Yf22sR+UpN/moaIYF226z2rPv+dw3+16vNtJgJNPQ7URq44UJvYDwwtFdHpGvVpc8yp0AEAAIBAbAAAACCQwacA9YkDNbWZ6tPmOG3MNY6SixuRLKthIlAN5hqBgLmq7bvLdwildJ0UNPXYT5MOAAAABGIDAAAAgWSLALVpKXaNAzUNfdOuNrGWObUp26x/nwlIW3YsrXoNpM5rIlA9TP6hjVyTf4aWmvbTRoSJQEPcIMwNv5iiVBxoTrGfJh0AAAAIxAYAAAACGWQK0NBxoFwixH7atOmHWIc2N4lrSl0DU2mvd52qkYrZjBkN6hP1qfmzoB6p2Ax16hMHEvsZR4QJezWYa+ynSQcAAAACsQEAAIBARm3Hdb3hSK5WV9epMnNqU3Zd8zF/9ppryyXXTXb6RINyTfWZ4vq34UZI7dWwVlMxlc+0jT6f+5zWoavUutUc4+kz/W9oqfW85r4Pj11KNb524x+t+nybz0sHAAAAArEBAACAQIq1dGprJdfQ3hpCm3Wu4WefSp191HbNtzH1NW+jhs8lwjozXSJAi6nhuyWXGj7HOa3n0ESAAACA09gAAABAIL1aOpdu2LIrVyGreW3p1S/kOM7ZS+cMejeap04dPzzk8VNS659at6HXYQhtfpba1r+rXNd5H32ujamv/9RZ/7KirX+b76sx/9bUvP41fLfnkvpMx1x/EaD2RIAAAIDT2AAAAEAg55YuYC1TjKzUZupr2Kx/Tu3UptRnNMTPO/XrASgr9Z3su+VM1iSvZqxFBHFZnwiWDgAAAARiAwAAAIFUHQFiMXNtO87150qJ9vMC0+I7CqZLBwAAAAKxAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAYLbOKl0AAABM1XO/ftvrbzy++LfunMS/rc8uXQAAADAeGwAAAAhkEm2KtWzcsGml7fL0qZOT/3kAAKhbM/aTUnMcSAcAAAACsQEAAIBAzi1dwCKasZ/U8+JAAADk0ib2MxU6AAAAEIgNAAAABDLJmEwqAtQkAgQAQB+5Yj+1TQTSAQAAgEBsAAAAIJDJTAFqE/tJvV4caNnNH9gy6f/3+r3fOj7pz9H6l2X9y7L+wFTMadpPig4AAAAEYgMAAACBTCYClHL8yBUrj7fseLxgJQC0cfCOy0uX0Mre258oXQIwkqFjP83j1zARSAcAAAACsQEAAIBAqo4ApSb/NGM/qeebcSATgQAAaCo17aeGOJAOAAAABGIDAAAAgVQdAQIAgFxyxX4uuP7FlccvPPLWHIcclQ4AAAAEYgMAAACBVBcB6jr5J8VEIACgj9S/SWivhn9rlZr200apiUA6AAAAEIgNAAAABFJFBKhUi00cCGB8e29/onQJwMwNEftpTv5JPT+ViUA6AAAAEIgNAAAABFJFBCglNfmnOdWnzXtTE4GiOfa9V1d9/s/v+/jIlaztvTd+uXQJg7D+ZVn/sqz/YiJMoZliBHf/VeeXLqE6+4++VLqE0zQn6tQ8BahpzIlAOgAAABCIDQAAAARSLAJUW1vTRCAApuKbN3yodAmdffDhb5QuYTKu/jf/LMtxvv77f5nlOJGlJv+0eX1zItCYN/lqQwcAAAACsQEAAIBAqpsClJr8M8TxI08EaiM1DaPr1I5cx4nG+pdl/cuy/kAuNUwEGnPCTxs6AAAAEIgNAAAABDJqBKi2yT8pJgIBACmbN11QuoRWRq2zshuB9dF18k+b4zQnAtVABwAAAAKxAQAAgEAGjwC1if0MPfmnzXlTE4Eix4FyTckwbWMx1r8s61+W9Z+HNjf/GjoeHO1vN2szEWiZDgAAAARiAwAAAIEUuxFYqdhPihuEAcA4tu+9O/sxjx28NfsxmZ9SsZ/aJgLpAAAAQCA2AAAAEMggEaCp3PCrqylOBJrTZ2H9y7L+ZVn/sqa4/gznxMkXBj3+z77nH6/6fJuIcjPSPHSdtJeK/ZSaCKQDAAAAgdgAAABAIKNOAapt8k9KtIlA773xy6VLCM36l2X9y7L+wNDaTP5pTunJpYZpPyk6AAAAEIgNAAAABJItAjSnaQ9tmAgBAEBTn9jPmBOBdAAAACAQGwAAAAhk8ClAQ0z+GXOa0FwnAn3zhg+VLqGVDz78jdIlDGL73rtLl9DKsYO3li5hEK7/su781BdKl9DKbfffVLqEQeS6rnL9Hs31e4ay2kz+yaXmaT8pOgAAABCIDQAAAATSKwJUavJPmyjOmDEhE4EAGFOuGM/uu/Z1ev2hPQey1JCK/fSpZ06+/vt/WeS9LKZ5E7FccaChJwLpAAAAQCA2AAAAEEjnCFCb2M+Y8ZsxtZkIJA4EADC+PpN/mtGdZqSnq9R7a5sUpAMAAACB2AAAAEAgg98IDABYzBBR0lwT/HLVVls9Ndt/1fmlS6haalpO12hQrjhQU59JQUNMBNIBAACAQGwAAAAgkFYRoNom/9QwZchEIACA+jVjM30mBbWRa9rPEDf/atIBAACAQGwAAAAgkGxTgFIxGACgTof2HChdwmlqqydl/9GXSpfAgrpOCkpNBBrixl5Dx36adAAAACAQGwAAAAgkGQHKdWMOlg0xEejSDVt2rfea15ZezXGq6jR/9qdOHT9cuoYU6z9ODSnWf5waUqz/ODV0letz6VND01yvE4aT69pruurhP75pteeP3vDLX3jjca7YT+pcXX+uPt8/OgAAABCIDQAAAASSjAC1iakM0YKZolIt4D4++PA3SpcQ2rGDt5YuITTXf1m33b9q95uRnL10TlUfQJ96hv77m/q3kH//LJviv3+6asZ1mnGgPsepgQ4AAAAEYgMAAACBZLsRGHWqrdUbjfUvy/qXZf2BOWkzKai2qE+KDgAAAARiAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAwGydVboAYHEbN2x6/Y3HT5866fd5ZNa/Hs/9+m0rn8XFv3WnzwIY1M33f2vlO+feT32g03fOl4488vr6r1rfJ3Zcv/B33dk5CgAAAKbBBgAAAAI5t3QBY/vR909kabu08bYLN2dpQz+0632j1TwnHz38Z2IAMGPN2E/qeXEgoI9m1Kfra7pGg8akAwAAAIHYAAAAQCBVR4BefnLXSkvlvK2Hq22jwJiak2dSz5tIMxzrX1Yq9hNN6jqMbMzfO+t/pjl977WJ/XQ9Tm1xIB0AAAAIxAYAAAACqSIC1Iz6AO0dP3LFyuMtOx4vWElM1n8cfWI/JgIBKbmiPt3P9eJYp03SAQAAgEBsAAAAIJBiEaA2sR+Tf5aVuqFVrikHc5oMAIzDtJ/+nnjygdIlZHP51p2lS+jM+tdpzNhPzXQAAAAgEBsAAAAIZPAIkAk/9Rv6hiap44sGtddcw+bkmabTJ9IsuSlVRtZ/HEPHfkwEgjhEfdamAwAAAIHYAAAAQCBV3AisyeSfcbSJ/Wy+95Ys5zpx8z3r1iAmATGVmvYjDnSmfV/5warPH7juHSNXEpP170/spz0dAAAACMQGAAAAAhkkAmTyT51SsZ9r7vtw4h3PrPrs869c0um8qShRMxokDgRx5Ir9XHD9iyuPX3jkrTkOCUyAqM+y5jrc+6kPdPq3kw4AAAAEYgMAAACBZIsAif3UKRX7OT2Ws3rUZ2jNGsSBztTm5lMpbkrVn/XPq9S0nzZMBII6Nb+Ht++9u2Qp1WvGgY4dvHXl+dTfHR0AAAAIxAYAAAACqe5GYEN724WbZ9/ebRf7qYs4EMzPELGf5uSf1PMmAsF0mfDTXzMutX1padVJQToAAAAQiA0AAAAE0isCZPIPEaQiVVNU6mfpE9+y/v2Vis81J+rUPAWoKfJEoAPXvaN0CaFZ/2XNmErqO3P3XfvGK6him97+ZvTx0J4Dq77GFCAAAMAGAAAAIgk3BWiu+kz+ef6VS7LX00dtE4Ga5xozwtH15lNtjrNlx+NZjtlGrs/I+i9mTlOzUpN/2ry+OREoWqQHIEUHAAAAArEBAACAQESAoIM2cZRc0ZEh5KotFWUZOnZi/ZeVWv8+apgIFHnCD0CTDgAAAARiAwAAAIFUFwFq3lzsvK2HtWgn6qJzn1n4vbVNJUpJxS227FhauYZrjqN01Yyd1BA1sf7z1nXyT5vjNCcCAfPz0Q2PLvzeh05ty1hJe11rzlWnDgAAAARiAwAAAIFUFwGCqWvGM6YeR5li7MT6189EIKBmh/YcGPT4u+/aN+jx29ABAACAQGwAAAAgkKojQCYCMXVTjKPMKXZi/etUKvZjIhDAMh0AAAAIxAYAAAACqToCBHNScxwlQuzE+pOK/USeCPRfPndz6RKS/tVv3lu6hMFZf0rRAQAAgEBsAAAAIJBeEaDmZJ7mxJ4hmAi0tmZsYOOGTStrdeLme1Zes/neW0ar5/lXLln4vc2am+YajWjGP8aMozTPG5n1H0ebyT/NKT25mPYD5LL/qvO7vf7oSwNV0p8OAAAABGIDAAAAgUxyCpA4EFPUjGbVrFnnnGJX1j+OPrGfyBOBUl7+d1/KfszzfvcT2Y85V9a/vYdObStdQmelatYBAACAQGwAAAAgkGwRoDEnAjWJA52p60Sgi859Jst5Tf5ZTKkbUTXPG20iTZP1H06byT+5mPYD0J4OAAAABGIDAAAAgQwyBaiGOFCqnmjaxIEuuu/DI1d1Zg1NEWI/fbSJi5SKtURg/evUvIlYrjiQiUDAXOkAAABAIDYAAAAQyCRvBNZVrhjS1KNEqTjQ1278o1Vf35wU1Ecq6tMULfbTJiKSipq0WastO5ZWveZT540wkabJ+g+nz+SfZnSnGenpKvVek4IAlukAAABAIDYAAAAQyOARoFRsZszpQF1NPerTRioO1NQmupOrhrlKrW1Tm8hH17VKfb6pc6WiKc33TvHzsv7jS03L6RoNyhUHauozKSjyRKDzfvcTpUsIzfozBB0AAAAIxAYAAAACKTYFqNTNwlIixH5SUtGCNvGJPsePrM+Ema7afL5TnzzTlfUfXzM202dSUBu5pv1Ei/oAcegAAABAIDYAAAAQSBU3AhtzUlDkqE9XojvjKLXObSZBRWD9x9d1UlBqItAQN/YS+4H6HdpzoMh59x99KctxStXfpAMAAACB2AAAAEAgvVqdl27YsitXIVP21Knjh0uc1/ovq239X1t69QurPX/20jk3DVtRfm1+Fus/nCmu/xCO3vDLq65DH1c9/MdZrodS6x8tNtbGmHE+63+mIdbfOveX+lx0AAAAIBAbAAAACKSKKUAwV1OMnTQ160/FUWpm/eehGdfpEwfKFfsBxpGKr4hAL+sTQdQBAACAQGwAAAAgEBEgyGzqsZOUqfxcU6mzq7n+XF2lYjzNaFCEqI/rYVmpKUzWf1mp9ac/HQAAAAjEBgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgNk6q3QBAFN18/3fev2Nx/d+6gO+T5m0H33/xOvrvyq/t1242e8OjOzs0gUAAADjsQEAAIBAtN1I2rhhU5Z28NOnTrrOBtL8jKzzcJpRn65Eg5gKESCm7ktHHlm5hj+x43rX1Rp0AAAAIBAbAAAACKRVeyRXFCSaqUcyRIDq0eezsP6L6RP7SREHopRS8Z5cxIRIacZ+cokQH9IBAACAQGwAAAAgkHNLF8A0fP07j3V6/dWXXTlQJfM2RNwudUzRoGVDRH26nks0aG1tfi9czxDHELGfaHQAAAAgEBsAAAAIJFsE6IknH8h1qEm4fOvO0iUwE31iP5vvvWXl8Ymb71n4vNHiE2PGftpo1iMOtJjmlBsTY2B+xH7y0gEAAIBAbAAAACAQU4BgJLmiPl1f0yYaNNdJQbVFfdowKag/cSCYB7Gf4egAAABAIDYAAAAQiAgQZDZ01CfXMecaDZpi7KcNk4IWIw4E0yL2Mw4dAAAACMQGAAAAAhk1AvTDz//BmKdb2Ns/85HSJTABpaI+X7zgyXVf88kXti5cw1SiQXON+rRhUtBiIseB9n3sk6VLACqiAwAAAIHYAAAAQCCmAMGAhpjqM7Q+0aAhNONG2/feXaSGqWhGg44dvHXl+ZqnNpUSOQ5Ee32inpH1+c75xI7rV95baiJQ87zNeuZEBwAAAAKxAQAAgEBEgIDqRJ7wk0szLrV9aclNxNYgDkRXX739XaVLqMK1dzxbuoTBzTUOpAMAAACB2AAAAEAg1UWAhr4J11RuRlZKauLB1Zddmf2YJpOQ0oyppK6f3XftG6+giTi058Cqz/td49j3Xl31+T+/7+MjV7K299745dIlUJEaJgI1zSkOpAMAAACB2AAAAEAg1UWAGF+pG500zzvFiEKz5tQaNm+eNcWbgrW5+dcUPztIMREIaGPqcSAdAAAACMQGAAAAAplMBOhPPnZXp9e//8E9A1UCQASR40CpaTxdpwblOg70idkMPUFoinEgHQAAAAjEBgAAAAKZTASIvEpN/kmZ+kQg6vHRDY8u/N6HTm3LWEl7XWsuVWdkkeNAMHVj3lBsKnEgHQAAAAjEBgAAAAIRAeI0Y96sqs1NpqCUQ3sODHr83XftG/T4DCdCHCjXlJ65Tvu59o5n133NtotfW/j4jz433n+f7VPnFP87sjjQsul9cgAAwMJsAAAAIBARoEBSk3/GjP2kztuMA5kIBPPw8pO7Fm6vn7f18CR+9yPEgWCuSsWBuhoiPqQDAAAAgdgAAABAIJOJAL3/wT2lS5ik2m741ZU4ENCG+M2Zpv7931Tqb0Gfc227+D0Lr/+YP+NU6hzamHGgroaYJqQDAAAAgdgAAABAIJOJAJFXavLPfb9w2brvvfEvvpO7nOREoKlotkFTbffmz1Vq8lIbbdZ/Tm3frvZfdX631x99aaBKhpMrOrJlx+Oj1VBz3KXm35f33vjl0iVAdSLEgXQAAAAgEBsAAAAIpLoI0A8//welS5i8mlvhfZgIRBsPndpWuoTOaqu5TaSNtfmOgnmoOQ7Uhw4AAAAEYgMAAACBVBcBYjFt2vRtJs8MMeHnc7/0K6s+/5vf/sNVn28zEUgcCMbRNQ7UdUrSVExxmlNKzVPImqY4EY55qy0O1GcikA4AAAAEYgMAAACBiABBAanW9pitee11ujIdaG3iiBDH1ONAOgAAABCIDQAAAAQyagTo7Z/5yJinm71ck3+Glpr208YUJwL1iUk0f8bUZ/fJF7YuWlqv2E8NawsAtakhDmQKEAAAkGQDAAAAgZgCNHMmvZSVis20iQb1mRQk6sPQUlG3Od0wqw2/L0BTDXGgNnQAAAAgEBsAAAAIRARoYtx8Z221TQRKGWJSkNgPpbhBGMD4uk7+adIBAACAQGwAAAAgkGwRoMu37sx1KNYgqjE/ueJAfc47RYf2HChy3lxTbkrVP7QIcaCp/+4A46h5IpAOAAAABGIDAAAAgZgCNGGXbtiyq3QNNXjq1PHDJc470Prf9MaD15Ze/ULug5+9dM7K8XPVX2r9Kavl9XPT+i+ZnubPXvP3z2tLr45Ryuimsv5LSz8Z+Pi5LF5nKZH//fP5PXdm+V7VAQAAgEBsAAAAIBARIKhUM67T1CYalHrvFKUmrkRuATeJYNFVn+lhtPft594yie/hqdQ5dX2iO5+567YBIsEAAEAYNgAAABBIqwiQFvzatOAZUzPe04wDzSn2A/TnOwHmIdfknyYdAAAACMQGAAAAAAAAAAAAAAAAAAAAAAAAAAAABvf/AMIrWZOpdi1pAAAAAElFTkSuQmCC');background-size:320px 320px;background-repeat:no-repeat;image-rendering:pixelated}.pixel.sm{width:30px;height:30px;flex-basis:30px;background-size:240px 240px}.pixel.lg{width:58px;height:58px;flex-basis:58px;background-size:464px 464px}.recipe-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.product{border:2px solid #45515a;background:#202b34;padding:13px;min-width:0}.product-top{display:flex;gap:10px;align-items:center}.product-meta{flex:1;min-width:0}.product h3{font-size:13px;line-height:1.3;margin:0 0 3px}.product p{font-size:10px;color:#aebbc0;margin:0}.product-count{font-weight:900;font-size:18px;color:var(--gold)}.product-btns{display:flex;gap:7px;margin-top:12px;flex-wrap:wrap}.product-btns button{flex:1;min-width:94px}.product-locked{background:#1a2229;border-color:#3a4147}.inventory-row{display:grid;grid-template-columns:1fr auto;gap:6px;margin-top:7px;font-size:11px}.job{padding:10px 0;border-bottom:1px solid #3f4b54}.job:last-child{border:0}.job .progress{margin:8px 0}.seg{display:inline-flex;gap:5px;background:#111b22;border:1px solid #3a4853;padding:4px}.seg button{background:transparent;color:#b3c1c0;border:0;padding:8px 10px;font-size:11px;font-weight:850;min-height:32px}.seg button.active{background:#695139;color:#ffdaa3}.note{color:#aeb8bc;font-size:11px;margin:8px 0 12px;line-height:1.6}.empty{padding:18px 12px;text-align:center;border:2px dashed #45515a;color:#adb9bd;font-size:12px}.empire-box{border:2px solid #46505b;background:#222d37;padding:14px;margin-bottom:12px}.empire-box.locked{filter:saturate(.65)}.empire-box h3{margin:0 0 6px;font-size:15px}.tag{display:inline-block;color:var(--mint);font-size:10px;font-weight:900}.spacer{height:8px}.offer{padding:12px 0;border-bottom:1px solid #47505b}.offer:last-child{border:0}.line{height:1px;background:#3c4851;margin:14px 0}.check{display:flex;align-items:center;gap:9px;padding:8px 0;font-size:11px}.check.ok{color:var(--mint)}.check span:first-child{font-size:15px}.toast-wrap{position:fixed;z-index:70;bottom:24px;right:20px;display:grid;gap:8px;max-width:min(350px,calc(100vw - 35px))}.toast{background:#26373b;color:#fbebc9;border:2px solid #8c7957;padding:10px 15px;font-size:12px;box-shadow:4px 4px #0c1119;animation:appear .2s}.modalwrap{position:fixed;inset:0;z-index:80;background:#06090fcc;display:grid;place-items:center;padding:16px}.modal{max-height:min(86vh,800px);overflow:auto;width:min(520px,100%);background:#242c34;border:3px solid #ba9562;box-shadow:8px 8px #080e13;padding:22px}.modal h2{margin:0 0 9px;color:#f5d89f;font-family:monospace;font-size:21px}.modal p{color:#bcc5c6;line-height:1.65;font-size:13px}.modal-actions{display:flex;flex-wrap:wrap;gap:9px;justify-content:flex-end;margin-top:20px}.modal textarea{width:100%;height:110px;background:#101923;border:1px solid #5a6872;color:#fff;padding:10px;margin-top:10px;font:11px monospace}.mobilebar{display:none}.footer{font-size:10px;color:#89999e;text-align:center;margin:30px 0}.fade{animation:appear .18s ease-out}@keyframes appear{from{opacity:.5;transform:translateY(4px)}to{opacity:1;transform:none}}@media(max-width:1050px){.game{grid-template-columns:160px minmax(0,1fr);gap:16px;padding:15px}.side{top:15px;height:calc(100vh - 30px)}.stats{grid-template-columns:1.4fr 1fr 1fr}.cols{grid-template-columns:minmax(0,1.15fr) minmax(250px,.85fr)}}@media(max-width:760px){body{font-size:13px}.game{display:block;padding:14px 12px calc(85px + env(safe-area-inset-bottom));min-height:100dvh}.side{display:none}.mobilebar{display:grid;grid-template-columns:repeat(3,1fr);position:fixed;left:0;right:0;bottom:0;z-index:40;background:#18232bdc;backdrop-filter:blur(14px);border-top:3px solid #99774d;padding:6px max(10px,env(safe-area-inset-right)) calc(7px + env(safe-area-inset-bottom)) max(10px,env(safe-area-inset-left));gap:6px}.mobilebar .navbtn{padding:7px 2px;flex-direction:column;text-align:center;min-height:52px;gap:1px;justify-content:center;font-size:12px;border-width:1px}.mobilebar .navicon{width:auto;height:24px}.top{margin-bottom:12px}.top-title{font-size:25px}.status .pill{font-size:9px;padding:4px 6px}.stats{grid-template-columns:1.2fr 1fr;gap:8px}.stats .stat:last-child{display:none}.stat{padding:11px}.big-number{font-size:23px}.stat-value{font-size:20px}.cols,.recipe-grid{grid-template-columns:1fr}.panel{padding:13px;box-shadow:3px 3px #080d12}.goal{padding:12px}.scene{aspect-ratio:16/10}.action{min-height:44px}.product{padding:12px}.toast-wrap{bottom:90px;right:12px}.modal{padding:16px}.scene-bottom{align-items:flex-start}}@media(max-width:360px){.game{padding:10px 9px 87px}.top-title{font-size:21px}.stats .stat{padding:9px}.big-number{font-size:19px}.product-btns button{min-width:82px}}
+
+/* Bar Inc 3.2: compact customer purchase feed */
+.sale-row{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:9px 0;border-bottom:1px solid #394953;min-width:0}.sale-row:last-of-type{border-bottom:0}.sale-row b{font-size:12px}.sale-amount{white-space:nowrap;color:var(--mint);font-size:12px}.sale-row .small{font-size:11px}
+
+/* Bar Inc. 3.2 – kompaktowy HUD, zapasy zamiast historii, powiększona sala 4×3. */
+.game{max-width:1500px}
+.stats{grid-template-columns:minmax(0,1.25fr) minmax(0,.85fr);gap:9px;margin-bottom:9px}
+.stats .stat{padding:9px 13px;min-height:68px}
+.stats .big-number{font-size:clamp(19px,2.3vw,27px);margin:1px 0}
+.stats .stat-value{font-size:23px;margin:1px 0}
+.stats .small{font-size:10px}
+.goal{padding:9px 13px;margin-bottom:11px}
+.goal .goal-body{margin-top:3px;gap:6px}
+.goal .goal-body strong{font-size:12px}
+.goal .progress{height:6px;margin:6px 0 4px}
+.goal .goal-meta{font-size:10px}
+.cols.bar-layout{grid-template-columns:minmax(0,1.78fr) minmax(270px,.80fr);gap:13px}
+.bar-layout .scene{aspect-ratio:640/455}
+.bar-layout .panel.warm{padding:12px}
+.bar-layout .scene-bottom{margin-top:8px}
+.stock-mini{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px;max-height:204px;overflow-y:auto;overscroll-behavior:contain;padding-right:2px}
+.stock-chip{min-width:0;display:flex;align-items:center;gap:5px;border:1px solid #42545b;background:#28363c;padding:5px 6px;font-size:10px}
+.stock-emoji{font-size:15px;line-height:1.1;flex:none}
+.stock-product{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;min-width:0;flex:1}
+.stock-chip b{color:#a9e5bc;font:800 12px monospace;white-space:nowrap}
+.stock-low{border-color:#92634f}.stock-low b{color:#f0aa8c}
+@media(max-width:1180px){.cols.bar-layout{grid-template-columns:minmax(0,1fr)}.bar-layout>.stack{display:grid;grid-template-columns:1fr 1fr;align-items:start}.stock-mini{max-height:185px}}
+@media(max-width:760px){.stats{grid-template-columns:1.25fr .85fr}.stats .stat:last-child{display:block}.stats .stat{padding:9px;min-height:62px}.stats .big-number{font-size:19px}.stats .stat-value{font-size:20px}.bar-layout>.stack{grid-template-columns:1fr}.bar-layout .scene{aspect-ratio:640/455}.goal .goal-body{align-items:flex-start}}
+@media(max-width:360px){.stats .big-number{font-size:17px}.stats .stat-value{font-size:18px}.stock-mini{gap:4px}.stock-chip{padding:5px 4px}}
+
+/* Bar Inc. 3.3: minimalny ekran, wierne proporcje sceny, zwarte pionowe zapasy i cennik. */
+[hidden]{display:none!important}
+.bar-layout .scene{aspect-ratio:640 / 455;width:100%;max-width:590px;height:auto;margin-inline:auto;}
+.bar-layout .scene canvas{width:100%;height:100%;display:block;image-rendering:pixelated;}
+.cols.bar-layout{grid-template-columns:minmax(0,1.42fr) minmax(280px,.91fr);align-items:start;gap:14px}
+.bar-layout .panel.warm{padding:12px}
+.stock-mini{display:block;max-height:290px;overflow-y:auto;overflow-x:hidden;padding-right:2px}
+.stock-head{display:grid;grid-template-columns:minmax(0,1fr) 52px 79px;gap:8px;padding:0 5px 6px;font-size:9px;font-weight:900;letter-spacing:.06em;color:var(--muted);text-align:right}
+.stock-head span:first-child{text-align:left}
+.stock-row{display:grid;grid-template-columns:minmax(0,1fr) 52px 79px;gap:8px;align-items:center;padding:6px 5px;border-bottom:1px solid #394953;font-size:11px;min-width:0}
+.stock-row:last-child{border-bottom:0}
+.stock-row .stock-name{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;min-width:0}
+.stock-row .stock-qty{color:var(--mint);font:800 12px monospace;text-align:right}
+.stock-row .stock-price{font-size:11px;white-space:nowrap;text-align:right;color:var(--gold)}
+.stock-row.stock-warn{background:#40352b}
+.stock-row.stock-warn .stock-qty{color:#ffbc77}
+.stock-row.stock-empty{background:#472c30}
+.stock-row.stock-empty .stock-qty{color:#ff9589}
+.room-switch{display:flex;flex-wrap:wrap;align-items:center;gap:5px;margin-top:10px}
+.room-switch .action{min-width:47px;min-height:35px;padding:6px 10px;font-size:11px}
+.room-switch .pill{font-size:10px}
+.room-switch .room-label{color:var(--muted);font-size:11px;margin-right:auto}
+.science-tag{border-color:#688496;background:#273d4d;color:#b8e5f5}
+@media(max-width:1180px){.cols.bar-layout{grid-template-columns:1fr}.bar-layout>.stack{display:grid;grid-template-columns:1fr 1fr;align-items:start}}
+@media(max-width:760px){.bar-layout>.stack{grid-template-columns:1fr}.bar-layout .scene{max-width:100%}.stock-mini{max-height:245px}.room-switch .action{min-height:43px}}
+
+/* Bar Inc. 3.5 – nawigacja etapowa: 3→7 osobnych zakładek. */
+.side {overflow-y:auto; scrollbar-color:#73634e #1c2630; scrollbar-width:thin;}
+.side .nav {gap:5px; align-content:start;}
+.side .navbtn{min-height:46px; padding:8px 9px; font-size:12px;}
+.side .side-foot{font-size:10px; flex-shrink:0;}
+.page-intro{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin:0 0 14px;padding:15px 17px;background:#273139;border:2px solid #4c5963;}
+.page-intro h2{font-size:17px;margin:0 0 6px;color:#f2c66c;font-family:ui-monospace,Menlo,Consolas,monospace;}
+.page-intro p{margin:0;color:#c2c6bf;font-size:12px;line-height:1.55;}
+.page-intro .pill{white-space:nowrap;}
+.page-grid{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(250px,.82fr);gap:14px;align-items:start;}
+.page-grid .panel{margin-bottom:0;}
+.resource-summary{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-bottom:14px;}
+.resource-summary .metric{min-width:0}.resource-summary .metric strong{font-size:19px;word-break:break-word;}
+@media (max-width:1050px){.page-grid{grid-template-columns:1fr;}}
+@media (max-width:760px){
+ body.nav-expanded .game{padding-bottom:calc(168px + env(safe-area-inset-bottom));}
+ body.nav-expanded .toast-wrap{bottom:163px;}
+ .mobilebar.many{grid-template-columns:repeat(4,minmax(0,1fr));column-gap:3px;row-gap:3px;padding:5px max(5px,env(safe-area-inset-right)) calc(5px + env(safe-area-inset-bottom)) max(5px,env(safe-area-inset-left));}
+ .mobilebar.many .navbtn{min-width:0;min-height:49px;padding:5px 1px;font-size:9px;line-height:1.05;letter-spacing:-.3px;gap:1px;box-shadow:none;}
+ .mobilebar.many .navicon{height:22px;display:flex;justify-content:center;}
+ .mobilebar.many .navicon .pixel{transform:scale(.8);transform-origin:top center;}
+ .page-intro{padding:11px;gap:6px;flex-direction:column;}.page-intro h2{font-size:15px;}
+ .resource-summary{gap:8px;}.resource-summary .metric{padding:9px;}.resource-summary .metric strong{font-size:17px;}
+}
+@media (max-width:360px){.mobilebar.many .navbtn{font-size:8px;min-height:48px;}}
+
+/* Bar Inc. 4.0: stabilny interfejs na telefonie i przewijanie całej strony. */
+html{scroll-behavior:auto!important}
+.stock-mini{max-height:none!important;overflow:visible!important;padding-right:0!important;overscroll-behavior:auto!important}
+.vat-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-bottom:12px}
+.vat-slot{min-width:0;min-height:104px;padding:9px;background:#26343d;border:1px solid #52616a;display:flex;flex-direction:column;justify-content:space-between;gap:4px}
+.vat-free{background:#222d35;border-color:#3d4d57}
+.vat-slot-head{display:flex;align-items:center;justify-content:space-between;gap:5px;font-size:11px}
+.vat-slot-head b{color:#f4d08d}
+.vat-state{font-size:9px;color:#88d9a4;font-weight:900;white-space:nowrap}
+.vat-free .vat-state{color:#aeb9b7}
+.vat-product{font-size:11px;font-weight:800;line-height:1.3;min-height:16px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.vat-counter{color:#b8c6bf;font-size:10px}
+.vat-slot .progress{height:6px;margin:4px 0 0}
+.toast-wrap{display:flex;flex-direction:column;gap:6px;pointer-events:none;max-width:min(300px,calc(100vw - 25px))}
+.toast{padding:7px 11px;font-size:11px;line-height:1.3;animation:appear .12s}
+@media(max-width:760px){.vat-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:6px}.vat-slot{min-height:106px;padding:7px}.stock-mini{max-height:none!important}.toast-wrap{max-width:235px;right:10px}}
+@media(max-width:370px){.vat-slot{min-height:110px}.vat-slot-head{flex-wrap:wrap}}
+
+/* Bar Inc. 4.0 — fixed card slots and contract alignment */
+.recipe-grid{align-items:stretch}
+.recipe-grid .product{display:flex;flex-direction:column;min-height:210px}
+.recipe-grid .product .product-btns{margin-top:auto}
+.recipe-grid .product .brew-status{height:18px;min-height:18px;line-height:18px;margin-top:9px;color:var(--mint);white-space:nowrap;overflow:hidden}
+.offer.contract-item{display:flex;flex-direction:column;min-height:258px}
+.contract-lines{min-height:132px}
+.contract-footer{margin-top:auto;padding-top:8px;min-height:66px;display:flex;flex-direction:column;justify-content:flex-end;gap:8px}
+.contract-footer .tiny{margin:0}
+@media(max-width:760px){.recipe-grid .product{min-height:208px}.offer.contract-item{min-height:258px}}
+/* Bar Inc 3.9: compact, non-jumping recipe cards */
+.recipe-grid .product{min-height:174px;gap:0}
+.recipe-grid .product .product-btns{margin-top:7px}
+.recipe-grid .product .inventory-row{margin:5px 0 0;padding:3px 0}
+.recipe-grid .product .brew-status{margin-top:5px;height:16px;min-height:16px;line-height:16px}
+@media(max-width:760px){.recipe-grid .product{min-height:174px}}
+
+/* Bar Inc. 4.5 — extra clearance beneath the iPhone status bar / Dynamic Island.
+   The 88px minimum also protects users whose iOS browser reports a zero safe-area inset. */
+@media (max-width:760px){
+  .game{
+    padding-top:max(88px, calc(env(safe-area-inset-top, 0px) + 32px));
+  }
+}
+
+/* Bar Inc. 5.2 — compact, persistent cash display */
+.cash-hud{border:2px solid #8e714a;background:#302c2b;color:#ffe5b5;box-shadow:3px 3px 0 #10151d;font-family:ui-monospace,Menlo,Consolas,monospace;font-variant-numeric:tabular-nums;}
+.cash-hud-desktop{flex-shrink:0;margin:0 3px;padding:9px 10px 10px;text-align:left;min-width:0}
+.cash-hud .cash-hud-label{display:block;font-size:9px;line-height:1.2;color:#cfb486;font-weight:900;letter-spacing:.6px;margin-bottom:4px}
+.cash-hud strong{display:block;font-size:clamp(14px,1.55vw,18px);line-height:1.2;font-weight:950;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.cash-hud-mobile{display:none}
+.side .nav{min-height:0;overflow-y:auto;overflow-x:hidden;scrollbar-width:thin;scrollbar-color:#605143 transparent;}
+@media(max-width:760px){
+  /* Mobile status-bar space plus one dedicated row for the small fixed wallet. */
+  .game{padding-top:max(139px, calc(env(safe-area-inset-top, 0px) + 82px));}
+  .cash-hud-mobile{position:fixed;z-index:45;top:max(87px, calc(env(safe-area-inset-top, 0px) + 40px));right:max(12px,env(safe-area-inset-right, 0px));display:flex;align-items:center;gap:6px;max-width:min(178px,70vw);min-height:37px;padding:6px 9px;pointer-events:none;background:#272b2bfa;border-width:2px;box-shadow:2px 2px #0b1119;}
+  .cash-hud-mobile strong{font-size:15px;line-height:1.2;max-width:142px;}
+}
+@media(max-width:360px){
+  .game{padding-top:max(132px, calc(env(safe-area-inset-top, 0px) + 82px));}
+  .cash-hud-mobile{right:9px;top:max(82px, calc(env(safe-area-inset-top, 0px) + 40px));padding:5px 7px;min-height:35px;}
+  .cash-hud-mobile strong{font-size:14px;}
+}
+
+
+/* Bar Inc 5.2 - wybór priorytetu bez iOS native select */
+.priority-trigger{margin-top:9px;display:flex;align-items:center;justify-content:space-between;gap:9px;width:100%;min-height:62px;padding:9px 12px;border:2px solid #90744e;background:#292e30;color:var(--white);text-align:left;box-shadow:3px 3px 0 #10151a;cursor:pointer;touch-action:manipulation}
+.priority-trigger:active{background:#394047}
+.priority-current{display:flex;align-items:center;gap:10px;min-width:0}
+.priority-trigger-icon{flex:0 0 32px;width:32px;height:32px;border:1px solid #89754f;background:#483c2c;display:grid;place-items:center;font-size:17px}
+.priority-trigger-text{display:flex;flex-direction:column;min-width:0}
+.priority-trigger-text small{font:800 9px ui-monospace,monospace;color:#b3b8b3;letter-spacing:.7px}
+.priority-trigger-text b{font-size:12px;color:#f4d69b;line-height:1.25;overflow-wrap:anywhere}
+.priority-chevron{font-size:24px;color:#e8c487;line-height:1;flex-shrink:0}
+.modal:has(.priority-dialog){width:min(510px,100%);max-height:min(82dvh,730px);padding:0;overflow:hidden;display:flex;flex-direction:column}
+.priority-dialog{display:flex;flex-direction:column;min-height:0;max-height:inherit;width:100%}
+.priority-dialog-head{padding:16px 18px 10px;border-bottom:2px solid #4f5b5b;background:#312c29;flex-shrink:0}
+.priority-dialog-head h2{font-size:19px;margin:4px 0 5px}
+.priority-dialog-head p{margin:0 0 4px;font-size:11px;line-height:1.5}
+.priority-options{overflow-y:auto;min-height:0;max-height:min(58dvh,530px);padding:10px;display:flex;flex-direction:column;gap:6px;-webkit-overflow-scrolling:touch;overscroll-behavior:contain}
+.priority-option{width:100%;display:flex;align-items:center;gap:11px;min-height:55px;background:#28343b;border:2px solid #495b65;color:var(--white);padding:7px 10px;text-align:left;flex-shrink:0;touch-action:manipulation}
+.priority-option:active{background:#3a4c53}
+.priority-option.is-selected{background:#443a2a;border-color:#e0b875}
+.priority-option-emoji{display:grid;place-items:center;flex:0 0 34px;width:34px;height:34px;border:1px solid #64767a;background:#1b252b;font-size:19px}
+.priority-option.is-selected .priority-option-emoji{border-color:#b99a64;background:#342e24}
+.priority-option-copy{min-width:0;flex:1;display:flex;flex-direction:column;gap:2px}
+.priority-option-copy strong{font-size:13px;font-weight:850;line-height:1.25}
+.priority-option-copy small{font-size:10px;color:#aab8b9;line-height:1.25}
+.priority-check{flex:0 0 23px;width:23px;height:23px;text-align:center;font:900 17px/22px monospace;color:#f3cd87}
+.priority-dialog-foot{border-top:2px solid #4f5b5b;background:#232e34;padding:11px 13px;display:flex;align-items:center;justify-content:space-between;gap:8px;flex-shrink:0}
+@media(max-width:550px){.modalwrap:has(.priority-dialog){padding:calc(env(safe-area-inset-top, 0px) + 12px) 13px calc(env(safe-area-inset-bottom,0px) + 16px)}.modal:has(.priority-dialog){max-height:min(76dvh,720px)}.priority-dialog-head{padding:13px 14px 9px}.priority-dialog-head h2{font-size:18px}.priority-options{max-height:52dvh}.priority-option{min-height:52px}.priority-dialog-foot{padding:9px 12px}}
+.renown-goal{border-top:1px solid #6b5741;margin-top:13px;padding-top:11px}.renown-goal .goal-title{font-size:11px;color:#e8d2a9}.renown-goal .goal-body{margin-top:6px}.renown-goal .goal-body strong{font-size:12px}.renown-goal .progress{height:7px;margin:9px 0 4px}@media(max-width:520px){.renown-goal .goal-body{align-items:flex-start;flex-wrap:wrap}.renown-goal .goal-body button{margin-left:auto}}
+body:after{content:'BETA 6.0';position:fixed;bottom:6px;right:8px;z-index:20;font:700 10px system-ui;letter-spacing:1px;color:#f2c66c;opacity:.65;pointer-events:none}</style></head><body><div class="game"><aside class="side"><div class="logo"><div class="logo-icon"><span class="pixel lg" data-sprite="0,0"></span></div><div class="logo-name">Bar Inc.</div><div class="logo-sub">PIXEL TYCOON</div></div><div class="cash-hud cash-hud-desktop" aria-label="Aktualna gotówka"><span class="cash-hud-label">💵 GOTÓWKA</span><strong id="stickyCashDesktop">650 💵</strong></div><nav class="nav" id="desktopNav"></nav><div class="side-foot">🍺 Warz. Sprzedawaj. Rozwijaj.<br>💾 Automatyczny zapis<br>🌙 Zarobki offline<br>⏳ Długoterminowa franczyza</div></aside><main class="main"><div class="top"><div><div class="eyebrow" id="chapter">ROZDZIAŁ I · MAŁY BAR</div><h1 class="top-title" id="pageTitle">Twój bar</h1></div><div class="status"><span class="pill gold" id="levelBadge">ETAP 1</span><span class="pill science-tag" id="scienceBadge" hidden>🧪 0 pkt</span><button class="action secondary smallbtn" data-act="settings">⚙ Opcje</button></div></div><section class="stats" id="stats"></section><section class="goal" id="goal"></section><section id="content" class="fade"></section><div class="footer">Bar Inc. 6.0 BETA · Gra offline, bez reklam i mikropłatności · Używaj eksportu zapisu jako kopii zapasowej</div></main></div><div class="cash-hud cash-hud-mobile" aria-label="Aktualna gotówka"><span aria-hidden="true">💵</span><strong id="stickyCashMobile">650</strong></div><nav class="mobilebar" id="mobileNav"></nav><div class="toast-wrap" id="toasts"></div><div id="modalHost"></div><input type="file" id="importFile" accept=".json,application/json" hidden><script>
+(()=>{'use strict';
+const KEY='barinc_6_beta_separate_save_v1',LEGACY='procentowe-imperium-bar-browar-v2',TUTORIAL='barinc3_intro';
+// Bar Inc. 6.0 BETA — spójna progresja ekonomiczna produktów.
+const R=[["Małe piwo",55,200,15,8,0,0,0],["Duże piwo",90,340,14,11,850,1,0],["Shot wódki",145,520,13,13,3200,2,0],["Shot whisky",220,750,12,16,9500,3,0],["Butelka piwa",330,1120,12,20,26000,4,0],["Butelka wódki",500,1640,11,24,65000,5,0],["Butelka whisky",760,2400,11,28,150000,6,0],["Skrzynka piwa",1150,3500,10,32,520000,7,1],["Beczka piwa",1700,5400,10,36,1200000,8,1],["Beczka whisky",2600,7200,9,42,2800000,9,1],["Ciężarówka piwa",3900,10000,9,48,6500000,10,1],["Cysterna wódki",5800,14500,9,55,15000000,11,1],["Cysterna whisky",8800,21000,8,62,35000000,12,1],["Tankowiec whisky",13000,31000,8,70,80000000,13,1],["Orbitalna gorzelnia",20000,44000,8,78,180000000,14,1],["Galaktyczna cysterna",30000,67000,8,90,410000000,15,1]].map(([name,price,cost,batch,time,unlock,sprite,large],id)=>({id,name,price,cost,batch,time,unlock,sprite,large}));
+const STAFF={
+ tables:{name:'Stolik',info:'+4 miejsca dla gości',base:300,growth:1.40,start:2,max:60,sprite:24},
+ bartenders:{name:'Barman',info:'Szybsza obsługa kolejki',base:650,growth:1.55,start:1,max:80,sprite:25},
+ brewers:{name:'Piwowar',info:'Automatycznie nastawia partie',base:260,growth:1.65,start:0,max:32,sprite:27},
+ vats:{name:'Kadź produkcyjna',info:'Kolejna równoczesna partia',base:780,growth:1.73,start:1,max:32,sprite:17},
+ marketing:{name:'Reklama baru',info:'+25% odwiedzających na poziom',base:900,growth:1.70,start:0,max:35,sprite:29},
+ waiters:{name:'Kelner',info:'Szybciej zwalnia stoliki',base:1600,growth:1.65,start:0,max:40,sprite:26}
+};
+const PHASES=[
+{threshold:0,title:'Mały bar',desc:'Rozpocznij działalność i zatrudnij piwowara.'},
+{threshold:1500,title:'Własny browar',desc:'Rozwijaj własną produkcję i zatrudniaj personel.'},
+{threshold:7500,title:'Hurtownia',desc:'Kontrakty wymagają zapasów i mają czas odnowienia.'},
+{threshold:35000,title:'Badania',desc:'Inwestuj w trwałe, zrównoważone ulepszenia.'},
+{threshold:140000,title:'Ekspansja',desc:'Nowe rynki zwiększają przychód stopniowo.'},
+{threshold:370000,title:'Franczyza',desc:'Zacznij od nowa za stabilną premię renomy.'}
+];
+const TOWN=['Gdańsk','Warszawa','Kraków','Praga','Berlin','Amsterdam','Paryż','Londyn','Rzym','Madryt','Oslo','Sztokholm','Nowy Jork','Toronto','Tokio','Seul','Singapur','Dubaj','Sydney','São Paulo','Księżyc','Mars','Orbita Jowisza','Pierścień Saturna'];
+const TECH={yield:{name:'Większe partie',info:'+8% produkcji na poziom',sprite:17},speed:{name:'Szybka fermentacja',info:'+6% szybkości produkcji na poziom',sprite:18},profit:{name:'Silna marka',info:'+4% przychodu na poziom',sprite:32}};
+// Bar Inc. 6.0 BETA — 200 zatwierdzonych celów z arkusza Bar_Inc_plan_200_celow.xlsx.
+// [Treść, klucz zdarzenia, nagroda bazowa 💵, rozdział].
+// Bar Inc. 6.0 BETA: cele zdefiniowane według uzgodnionych 10 zadań.
+// Po resecie franczyzy zadania zaczynają się od początku.
+const STORY_BASE=[
+ ["Zatrudnij piwowara","brewers",1,150],
+ ["Obsłuż 10 klientów","served",10,220],
+ ["Odblokuj duże piwo","recipes",2,800],
+ ["Kup drugą kadź","vats",2,1000],
+ ["Kup trzeci stolik","tables",3,1200],
+ ["Kup drugiego barmana","bartenders",2,2000],
+ ["Sprzedaj 50 trunków","served",50,2400],
+ ["Odblokuj szot wódki","recipes",3,3000],
+ ["Obsłuż 120 klientów","served",120,3300],
+ ["Kup pierwszą reklamę baru","marketing",1,3500],
+ ["Wyprodukuj 20 partii","batches",20,5000],
+ ["Obsłuż 180 klientów","served",180,6500],
+ ["Osiągnij utarg 25 tys. 💵","run",25000,9500],
+ ["Odblokuj szot whisky","recipes",4,18000],
+ ["Zrealizuj pierwszy kontrakt","contracts",1,22000],
+ ["Zatrudnij trzeciego barmana","bartenders",3,12000],
+ ["Kup trzecią kadź","vats",3,9000],
+ ["Wyprodukuj 35 partii","batches",35,16000],
+ ["Zrealizuj 3 kontrakty","contracts",3,21000],
+ ["Wielkie wyzwanie #1 — obsłuż 250 klientów","served",250,25000],
+ ["Osiągnij utarg 200 tys. 💵","run",200000,30000],
+ ["Wielkie wyzwanie #2 — zatrudnij 2 piwowarów","brewers",2,12000],
+];
+function storyReward(amount){
+ // Stała, czytelna cena za kamień milowy, bez bezmyślnego wzrostu od indeksu.
+ return Math.max(1,Math.round(amount/10)*10);
+}
+function buildLongStory(){
+ const list=STORY_BASE.map(q=>q.slice());
+ const contractGoals=[5,10,14,18,24,30,36,42,50,60,70,85];
+ const renownGoals={7:1,9:3,11:8,13:15,15:30};
+ let challenge=2;
+ for(let id=4;id<R.length;id++){
+  const chapter=id-4;
+  const unlock=R[id].unlock;
+  const bottle=R[id].name.toLowerCase();
+  const contractTarget=contractGoals[chapter];
+  const adTarget=Math.min(STAFF.marketing.max,3+chapter);
+  const vatsTarget=Math.min(STAFF.vats.max,4+chapter);
+  const guests=300+chapter*125;
+  const batches=50+chapter*40;
+  const runTarget=Math.round(unlock*(chapter<3?1.6:1.3));
+  const adCost=STAFF.marketing.base*Math.pow(STAFF.marketing.growth,Math.max(0,adTarget-1));
+  const vatsCost=STAFF.vats.base*Math.pow(STAFF.vats.growth,Math.max(0,vatsTarget-2));
+  const specials={
+   4:['Zatrudnij pierwszego kelnera','waiters',1],
+   5:['Zdobądź 2 punkty badań w tej franczyzie','scienceRun',2],
+   6:['Zdobądź pierwszy rynek','markets',1],
+   8:['Zdobądź 5 punktów badań w tej franczyzie','scienceRun',5],
+   10:['Zdobądź 3 rynki','markets',3],
+   12:['Zdobądź 5 rynków','markets',5],
+   14:['Zdobądź 7 rynków','markets',7]
+  };
+  let special=specials[id];
+  if(Object.hasOwn(renownGoals,id))special=['Zdobądź '+renownGoals[id]+' pkt renomy','renown',renownGoals[id]];
+  if(!special)special=['Zdobądź 1 punkt badań w tej franczyzie','scienceRun',1];
+  const rewardSpecial=special[1]==='renown'?0:storyReward(unlock*.085);
+  const next=[
+   ['Odblokuj '+bottle,'recipes',id+1,storyReward(unlock*.35)],
+   ['Osiągnij utarg '+runTarget.toLocaleString('pl-PL')+' 💵','run',runTarget,storyReward(unlock*.12)],
+   ['Zrealizuj '+contractTarget+' kontraktów','contracts',contractTarget,storyReward(unlock*.10)],
+   ['Kup '+adTarget+' reklam baru','marketing',adTarget,storyReward(Math.min(unlock*.07,adCost*.7))],
+   ['Obsłuż '+guests+' klientów','served',guests,storyReward(unlock*.07)],
+   ['Kup '+vatsTarget+' kadzi produkcyjnych','vats',vatsTarget,storyReward(Math.min(unlock*.07,vatsCost*.7))],
+   ['Wyprodukuj '+batches+' partii','batches',batches,storyReward(unlock*.065)],
+   [special[0],special[1],special[2],rewardSpecial],
+   ['Wielkie wyzwanie #'+(++challenge)+' — zrealizuj '+(contractTarget+3)+' kontraktów','contracts',contractTarget+3,storyReward(unlock*.14)]
+  ];
+  if(id===7){const milestone=next.splice(7,1)[0];next.unshift(milestone);}
+  next.forEach(x=>list.push(x));
+ }
+ return list;
+}
+const STORY=buildLongStory();
+
+const QUEST_TEMPLATES=[['Bar pełen gości','served',45,1200],['Pracowity browar','batches',8,1400],['Kasowy dzień','income',9500,2300],['Towar dla klientów','manual',3,1500],['Produkcja seryjna','batches',14,2200],['Uśmiechy klientów','served',80,2400]];
+const WEEKLY=[['Tydzień dobrej obsługi','served',360,9000],['Prężny browar','batches',55,11000],['Rekordowy utarg','income',190000,17000]];
+const STORE=(()=>{try{const z=window.localStorage;z.setItem('__barinc_probe','1');z.removeItem('__barinc_probe');return z}catch(e){const memory={};return{getItem:k=>memory[k]??null,setItem:(k,v)=>{memory[k]=String(v)},removeItem:k=>delete memory[k]}}})();
+const $=id=>document.getElementById(id),clamp=(x,a,b)=>Math.max(a,Math.min(b,x));
+const compactAmount=n=>{if(!Number.isFinite(n))return '∞';if(n<0)return '-'+compactAmount(-n);if(n<1000)return Math.round(n).toLocaleString('pl-PL');const p=Math.floor(Math.log10(n)/3);let suffix;if(p===1)suffix='k';else if(p===2)suffix='M';else if(p===3)suffix='B';else{let x=p-4,s='';do{s=String.fromCharCode(97+x%26)+s;x=Math.floor(x/26)-1}while(x>=0);suffix='a'+s}const val=n/Math.pow(1000,p);return val.toLocaleString('pl-PL',{maximumFractionDigits:val>=100?0:val>=10?1:2})+suffix};
+const cash=n=>compactAmount(n)+' 💵';
+const number=n=>n>=1000?cash(n).replace(' 💵',''):Math.round(n).toLocaleString('pl-PL');const time=n=>n<60?Math.ceil(n)+' s':n<3600?Math.ceil(n/60)+' min':(n/3600).toFixed(1)+' h';
+const dateKey=(date=new Date())=>[date.getFullYear(),String(date.getMonth()+1).padStart(2,'0'),String(date.getDate()).padStart(2,'0')].join('-');
+function weekKey(){let d=new Date(),day=(d.getDay()+6)%7;d.setDate(d.getDate()-day);return dateKey(d)}
+function stage(){let i=0;while(i+1<PHASES.length&&g.businessRun>=PHASES[i+1].threshold)i++;return i}
+function nextRecipe(){return g.unlocked.length<R.length?g.unlocked.length:-1}
+function multiplier(){return (1+.025*Math.sqrt(Math.max(0,g.renown)))*(1+.04*g.tech.profit)*(1+.0075*g.markets)*(1+.003*Math.sqrt(Math.max(0,g.brandXp)))}
+function productRate(){return g.rateSamples.reduce((a,r)=>a+r.val,0)/Math.max(1,Math.min(30,(Date.now()-g.sessionStart)/1000))}
+function sprite(i,size=''){let n=Number(i),x=n%8,y=Math.floor(n/8);let z=size==='sm'?30:size==='lg'?58:40;return `<span class="pixel ${size}" style="background-position:-${x*z}px -${y*z}px"></span>`}
+function button(label,action,arg='',disabled=false,cls=''){return `<button class="action ${cls}" data-act="${action}" ${arg!==''?`data-id="${arg}"`:''} ${disabled?'disabled':''}>${label}</button>`}
+function meter(p,variant=''){return `<div class="progress"><div class="fill ${variant}" style="width:${clamp(p,0,100)}%"></div></div>`}
+function fresh(){return{v:3,saveAt:Date.now(),cash:1050,run:0,businessRun:0,total:0,served:0,careerServed:0,lost:0,rep:90,stocks:R.map((_,i)=>i===0?20:0),unlocked:[0],staff:{tables:2,bartenders:1,brewers:0,vats:1,marketing:0,waiters:0},jobs:[],auto:true,focus:-1,queue:[],sitting:[],nextId:1,spawn:0,service:0,autoTimer:0,age:0,batches:0,careerBatches:0,contracts:0,careerContracts:0,manual:0,careerManual:0,runBatches:0,runCustomers:0,rateSamples:[],sessionStart:Date.now(),renown:0,prestiges:0,seals:0,earnedSeals:0,science:0,earnedScience:0,markets:0,tech:{yield:0,speed:0,profit:0,auto:0},offers:[],offerSeq:1,story:0,storyRules:60,storyRevenueCheckpoint:null,nextContractAt:0,productSales:R.map(()=>0),runScienceEarned:0,careerTablesBought:0,daily:null,weekly:null,brandXp:0,tipSeen:{},totalOffline:0,sales:[],roomView:0}}
+const DRINK_EMOJIS=['🍺','🍻','🥃','🥃','🍺','🍾','🥃','📦','🛢️','🛢️','🚚','🚛','🚛','🚢','🏭','🌌'];
+
+let g,tab='bar',view='all',helpShown=false,now=Date.now(),lastUI=0,lastSave=0,rateBuffer=0,openedModal='',sprites=new Image(),motion=new Map(),drawLast=0,scenePrevTs=0;
+const tabScroll=Object.create(null);let keepScroll=null;let unlockQueue=[];let unlockNoticesReady=false;
+const SRC='__ATLAS__';sprites.src=SRC;
+function brewSecondsForSave(id,s){return R[id].time/(1+.06*s.tech.speed+.055*Math.max(0,s.staff.brewers-1))}
+function safeInt(n,low=0,max=1e20){return Number.isFinite(Number(n))?Math.floor(clamp(Number(n),low,max)):low}
+function safeNum(n,low=0,max=1e300){return Number.isFinite(Number(n))?clamp(Number(n),low,max):low}
+// Każdy klient otrzymuje stały numer miejsca (4 miejsca przy stoliku, 12 stolików na salę).
+// Wybieramy pierwsze wolne miejsce, nie zmieniając numerów już siedzących osób.
+function firstFreeSeat(sitting,tableCount){
+ const busy=new Set(sitting.map(q=>q.seat));
+ for(let seat=0;seat<tableCount*4;seat++)if(!busy.has(seat))return seat;
+ return -1;
+}
+// Migracja zapisów ze starszych wersji, które przechowywały salę, ale nie krzesło.
+// Istniejące prawidłowe numery miejsc zachowujemy; stare zajmujemy w obrębie sali.
+function restoreSeats(sitting,tableCount){
+ const limit=tableCount*4,occupied=new Set();
+ return sitting.map((q,i)=>{
+  let seat=Number.isInteger(q.seat)&&q.seat>=0&&q.seat<limit&&!occupied.has(q.seat)?q.seat:-1;
+  if(seat<0){
+   const room=Number.isInteger(q.room)&&q.room>=0?Math.floor(q.room):Math.floor(i/48);
+   const start=Math.min(limit,room*48),end=Math.min(limit,start+48);
+   for(let s=start;s<end;s++)if(!occupied.has(s)){seat=s;break}
+  }
+  if(seat<0)for(let s=0;s<limit;s++)if(!occupied.has(s)){seat=s;break}
+  if(seat<0)return null;
+  occupied.add(seat);
+  return {...q,seat,room:Math.floor(seat/48)};
+ }).filter(Boolean);
+}
+function sanitize(obj){let d=fresh();if(!obj||obj.v!==3)return d;for(const k of ['cash','run','total','rep','spawn','service','autoTimer','age','earnedSeals','sessionStart','saveAt','totalOffline'])d[k]=safeNum(obj[k],0,k==='rep'?100:1e300);for(const k of ['served','careerServed','lost','nextId','batches','careerBatches','contracts','careerContracts','manual','careerManual','runBatches','runCustomers','renown','prestiges','seals','science','earnedScience','markets','offerSeq','story','brandXp','careerTablesBought','runScienceEarned'])d[k]=safeInt(obj[k],0,1e20);for(const k in STAFF)d.staff[k]=safeInt(obj.staff?.[k],0,STAFF[k].max);for(const k in TECH)d.tech[k]=safeInt(obj.tech?.[k],0,100);d.tech.auto=safeInt(obj.tech?.auto,0,100);d.stocks=R.map((_,i)=>safeNum(obj.stocks?.[i],0,1e20));d.productSales=R.map((_,i)=>safeInt(obj.productSales?.[i],0,1e20));d.unlocked=[0,...(Array.isArray(obj.unlocked)?obj.unlocked:[]).filter(i=>Number.isInteger(i)&&i>=0&&i<R.length)].filter((v,i,a)=>a.indexOf(v)===i).sort((a,b)=>a-b);d.jobs=(Array.isArray(obj.jobs)?obj.jobs:[]).slice(0,d.staff.vats).filter(j=>R[j.id]&&d.unlocked.includes(j.id)).map(j=>{const newTotal=brewSecondsForSave(j.id,d);const oldTotal=safeNum(j.total,1,1e6);return{id:j.id,left:Math.min(newTotal,safeNum(j.left,0,1e6)/oldTotal*newTotal),total:newTotal}});d.queue=(Array.isArray(obj.queue)?obj.queue:[]).slice(0,60).filter(q=>R[q.r]).map(q=>({id:safeInt(q.id),r:safeInt(q.r),pat:safeNum(q.pat,0,300),max:safeNum(q.max,1,300)}));d.sitting=(Array.isArray(obj.sitting)?obj.sitting:[]).slice(0,d.staff.tables*4).map(q=>({id:safeInt(q.id),left:safeNum(q.left,1,200)}));d.auto=obj.auto!==false;d.focus=Number.isInteger(obj.focus)&&obj.focus<R.length?obj.focus:-1;d.offers=(Array.isArray(obj.offers)?obj.offers:[]).slice(0,3).filter(o=>o&&Array.isArray(o.items)).map(o=>({...o,items:o.items.filter(it=>R[it.id]).map(it=>({id:it.id,n:safeInt(it.n,1,500)})),reward:safeNum(o.reward),seals:safeInt(o.seals,1,100),science:safeInt(o.science,1,100),id:safeInt(o.id,1,1e20)}));d.businessRun=safeNum(obj.businessRun,0);d.nextContractAt=safeNum(obj.nextContractAt,0);d.story=safeInt(obj.story,0,1e8);d.storyRules=9; // New story keeps ordinal on migration; restarts at next franchise.
+// Old v5.11 action checkpoints are no longer used, but all economic progress remains.
+// Refresh daily and weekly quests after loading a 5.11 save.
+d.brandXp=safeInt(obj.brandXp,0,1e8);d.daily=obj.daily&&typeof obj.daily==='object'?obj.daily:null;d.weekly=obj.weekly&&typeof obj.weekly==='object'?obj.weekly:null;if(obj.storyRules===7){d.daily=null;d.weekly=null;}d.tipSeen=obj.tipSeen&&typeof obj.tipSeen==='object'?obj.tipSeen:{};d.sales=(Array.isArray(obj.sales)?obj.sales:[]).slice(0,18).filter(s=>s&&R[s.r]&&Number.isFinite(Number(s.paid))).map(s=>({id:safeInt(s.id,1,1e20),r:safeInt(s.r,0,R.length-1),paid:safeNum(s.paid,0,1e300),ts:safeNum(s.ts,0,1e20)}));d.roomView=safeInt(obj.roomView,0,4);d.sitting=restoreSeats(d.sitting.map((q,i)=>({...q,r:Number.isInteger(obj.sitting?.[i]?.r)&&R[obj.sitting[i].r]?obj.sitting[i].r:0,room:Number.isInteger(obj.sitting?.[i]?.room)?safeInt(obj.sitting[i].room,0,4):Math.floor(i/48),seat:Number.isInteger(obj.sitting?.[i]?.seat)?obj.sitting[i].seat:-1})),d.staff.tables);d.rateSamples=[];d.sessionStart=Date.now();return d}
+function save(){try{g.saveAt=Date.now();STORE.setItem(KEY,JSON.stringify({...g,rateSamples:[]}));return true}catch(e){return false}}
+function load(){try{return sanitize(JSON.parse(STORE.getItem(KEY)))}catch(e){return fresh()}}
+function notify(msg,bad=false){const wrap=$('toasts');if(!wrap)return;const el=document.createElement('div');el.className='toast';el.textContent=(bad?'⚠ ':'✦ ')+msg;wrap.appendChild(el);while(wrap.children.length>3)wrap.firstElementChild.remove();setTimeout(()=>el.remove(),2200)}
+function spend(n){if(g.cash+1e-5<n)return false;g.cash-=n;return true}
+function earn(n,barSale=false,business=true){if(!Number.isFinite(n)||n<0)return;g.cash+=n;g.run+=n;g.total+=n;if(business)g.businessRun+=n;if(barSale)rateBuffer+=n}
+// Limity zakupów zależą od aktualnie odblokowanych receptur. Ponadlimitowe
+// kadzie i piwowarzy ze starych zapisów są zachowywani, ale nie można kupić następnych.
+function vatLevelLimit(){return Math.min(STAFF.vats.max,g.unlocked.length*2)}
+// Piwowarów można zatrudnić najwyżej tylu, ile posiadamy kadzi.
+function brewerLevelLimit(){return Math.min(STAFF.brewers.max,g.staff.vats)}
+function staffBuyLimit(type){if(type==='vats')return vatLevelLimit();if(type==='brewers')return brewerLevelLimit();return STAFF[type].max}
+function staffCost(type){const s=STAFF[type],owned=g.staff[type];return Math.ceil(s.base*s.growth**Math.max(0,owned-s.start))}
+function buyStaff(type){const p=STAFF[type];if(!p)return;if(g.staff[type]>=staffBuyLimit(type)){if(type==='vats')notify('Odblokuj kolejny trunek, aby móc kupić więcej kadzi.',true);else if(type==='brewers')notify(g.staff.vats<vatLevelLimit()?'Kup kolejną kadź, aby móc zatrudnić piwowara.':'Odblokuj kolejny trunek, aby rozbudować browar.',true);return}const price=staffCost(type);if(!spend(price))return notify('Brakuje gotówki.',true);g.staff[type]++;if(type==='tables')g.careerTablesBought++;if(type==='brewers')g.auto=true;notify(`${p.name}: +1`);save();render()}
+function unlock(){const id=nextRecipe();if(id===-1)return;const r=R[id];if(!spend(r.unlock))return notify('Brakuje gotówki na recepturę.',true);g.unlocked.push(id);notify('Nowa receptura: '+r.name);save();render()}
+function batchQty(id){return Math.max(1,Math.floor(R[id].batch*(1+.08*g.tech.yield)*(1+.002*Math.sqrt(Math.max(0,g.brandXp)))))}
+function brewSeconds(id){return R[id].time/(1+.06*g.tech.speed+.055*Math.max(0,g.staff.brewers-1))}
+function brew(id,silent=false){const r=R[id];if(!r||!g.unlocked.includes(id)||g.jobs.length>=g.staff.vats||!spend(r.cost))return false;g.jobs.push({id,left:brewSeconds(id),total:brewSeconds(id)});if(!silent){g.manual++;g.careerManual++;notify('Rozpoczęto: '+r.name)}return true}
+function instantCost(id){return Math.ceil(Math.max(R[id].cost*4,R[id].price*batchQty(id)*2.5))}
+function instant(id){const r=R[id];if(!r||!g.unlocked.includes(id)||!spend(instantCost(id)))return notify('Nie wystarczy na szybką dostawę.',true);g.stocks[id]+=batchQty(id);g.manual++;g.careerManual++;notify('⚡ '+r.name+': +'+batchQty(id)+' szt.');save();render()}
+function finish(j){g.stocks[j.id]+=batchQty(j.id);g.batches++;g.careerBatches++;g.runBatches++}
+function selectProduct(){const ids=g.unlocked;const k=ids.length;let total=0,w=[];for(let i=0;i<k;i++){let v=Math.pow(1.13,i);total+=v;w.push(v)}let roll=Math.random()*total;for(let i=0;i<k;i++){roll-=w[i];if(roll<=0)return ids[i]}return ids[k-1]}
+function spawn(){if(g.queue.length>=38)return;const id=selectProduct();g.queue.push({id:g.nextId++,r:id,pat:55+Math.min(50,1.4*g.staff.tables),max:55+Math.min(50,1.4*g.staff.tables)})}
+function customerService(){
+ const freeSeat=firstFreeSeat(g.sitting,g.staff.tables);
+ const index=g.queue.findIndex(q=>g.stocks[q.r]>=1&&(R[q.r].large||freeSeat>=0));
+ if(index<0)return false;
+ const q=g.queue[index],large=R[q.r].large;
+ g.stocks[q.r]--;
+ const paid=R[q.r].price*multiplier()*(.8+.2*g.rep/100);
+ earn(paid,true);
+ g.queue.splice(index,1);g.served++;g.careerServed++;g.runCustomers++;g.productSales[q.r]=(g.productSales[q.r]||0)+1;g.rep=clamp(g.rep+.045,15,100);
+ if(!large){
+  // Pierwsze wolne miejsce zostaje przypisane na cały pobyt klienta.
+  g.sitting.push({id:q.id,r:q.r,seat:freeSeat,room:Math.floor(freeSeat/48),left:15+Math.random()*16});
+ }
+ return true
+}
+function autoBrew(){
+ if(!g.auto||g.staff.brewers<1||g.jobs.length>=g.staff.vats)return;
+ const slots=Math.min(g.staff.vats-g.jobs.length,Math.max(1,g.staff.brewers+g.tech.auto));
+ for(let n=0;n<slots;n++){
+  let best=-1,score=-1;
+  for(const id of g.unlocked){
+   if(g.cash<R[id].cost*1.08)continue;
+   const qty=batchQty(id);
+   const demand=g.queue.filter(q=>q.r===id).length;
+   const contract=g.offers.length?g.offers[0].items.find(it=>it.id===id)?.n||0:0;
+   const inProgress=g.jobs.filter(j=>j.id===id).length*qty;
+   const have=g.stocks[id]+inProgress;
+   const desired=Math.max(Math.ceil(qty*1.25),Math.ceil(demand*2+qty*.65),contract+Math.ceil(qty*.5));
+   if(have>=desired)continue;
+   const shortage=(desired-have)/Math.max(1,qty);
+   const weight=1+.08*Math.log2(1+R[id].price);
+   const priority=id===g.focus?1.4:1;
+   const value=shortage*weight*priority;
+   if(value>score){score=value;best=id;}
+  }
+  if(best<0||!brew(best,true))break;
+ }
+}
+
+function liveStep(dt){g.age+=dt;g.spawn+=dt*.46*(1+.25*g.staff.marketing);while(g.spawn>=1){g.spawn-=1;spawn()}for(const q of g.queue){q.pat-=dt;if(q.pat<0){q.pat=0;g.lost++;g.rep=clamp(g.rep-.55,15,100)}}g.queue=g.queue.filter(q=>q.pat>0);g.sitting.forEach(q=>q.left-=dt*(1+.14*g.staff.waiters));g.sitting=g.sitting.filter(q=>q.left>0);g.service+=dt*g.staff.bartenders*(1+.12*g.staff.waiters)/2.15;while(g.service>=1){g.service-=1;if(!customerService()){g.service=Math.min(1,g.service);break}}for(let i=g.jobs.length-1;i>=0;i--){g.jobs[i].left-=dt;if(g.jobs[i].left<=0){finish(g.jobs[i]);g.jobs.splice(i,1)}}g.autoTimer+=dt;if(g.autoTimer>=Math.max(.35,2/(1+.35*g.tech.auto))){g.autoTimer=0;autoBrew()}g.rep=clamp(g.rep,15,100);}
+function calcOffline(){
+ const elapsed=clamp((Date.now()-g.saveAt)/1000,0,2*3600);if(elapsed<50)return;
+ for(const j of [...g.jobs]){j.left-=elapsed;if(j.left<=0){finish(j);g.jobs.splice(g.jobs.indexOf(j),1)}}
+ const rate=Math.min(.46*(1+.25*g.staff.marketing),g.staff.bartenders*(1+.12*g.staff.waiters)/2.15,g.staff.tables*4/22);
+ const weights=g.unlocked.map((id,i)=>Math.pow(1.13,i)),sum=weights.reduce((a,b)=>a+b,0);
+ const avg=g.unlocked.reduce((a,id,i)=>a+R[id].price*weights[i],0)/sum;
+ const supply=g.staff.brewers?Math.min(.5,.18+.06*g.staff.vats):.06;
+ const estimate=Math.floor(rate*elapsed*avg*multiplier()*supply);
+ if(estimate>0){earn(estimate,false,true);g.totalOffline+=estimate;notify('Sprzedaż offline: '+cash(estimate))}
+ g.saveAt=Date.now();
+}
+function dueReset(){const d=dateKey(),w=weekKey();if(!g.daily||g.daily.key!==d){let diff=clamp(1+Math.floor(Math.log10(Math.max(1,g.total))/3),1,7),i=new Date().getDate()%4;g.daily={key:d,tasks:[0,1,2].map(n=>taskMake(QUEST_TEMPLATES[(i+n)%QUEST_TEMPLATES.length],diff)),start:snapshot()}}if(!g.weekly||g.weekly.key!==w){let diff=clamp(1+Math.floor(Math.log10(Math.max(1,g.total))/4),1,7);g.weekly={key:w,tasks:WEEKLY.slice(0,2).map(q=>taskMake(q,diff*3)),start:snapshot()}}}
+function snapshot(){return{served:g.careerServed,batches:g.careerBatches,income:g.total,manual:g.careerManual}}
+function taskMake(q,mult){return{name:q[0],type:q[1],target:Math.ceil(q[2]*mult),reward:Math.round(Math.min(q[3]*Math.sqrt(mult),Math.max(250,R[Math.min(R.length-1,g.unlocked.length)].unlock*.07))),claimed:false}}
+function questProgress(group,q){return Math.max(0,(snapshot()[q.type]||0)-(group.start[q.type]||0))}
+function claimQuest(period,i){dueReset();let gr=g[period],q=gr.tasks[i];if(!q||q.claimed||questProgress(gr,q)<q.target)return; q.claimed=true;earn(q.reward,false,false);g.brandXp++;if(period==='weekly'){g.science++;g.runScienceEarned++;}notify('Zadanie ukończone: +'+cash(q.reward));save();render()}
+function storyValue(type){
+ // Cele dotyczą BIEŻĄCEJ franczyzy, poza trwałą renomą i liczbą rynków.
+ if(type==='served')return g.served;
+ if(type==='recipes')return g.unlocked.length;
+ if(type==='tables')return g.staff.tables;
+ if(type==='bartenders')return g.staff.bartenders;
+ if(type==='brewers')return g.staff.brewers;
+ if(type==='vats')return g.staff.vats;
+ if(type==='marketing')return g.staff.marketing;
+ if(type==='waiters')return g.staff.waiters;
+ if(type==='batches')return g.batches;
+ if(type==='contracts')return g.contracts;
+ if(type==='scienceRun')return g.runScienceEarned||0;
+ if(type==='markets')return g.markets;
+ if(type==='renown')return g.renown;
+ if(type==='run')return g.run;
+ return 0;
+}
+function skipCompletedRenownGoals(){
+ // Po nowej franczyzie osiągnięte progi renomy pomijamy bez nagród i XP,
+ // inaczej sam restart pozwalałby odbierać nieograniczone premie pieniężne.
+ let skipped=0;
+ while(g.story<STORY.length&&STORY[g.story][1]==='renown'&&g.renown>=STORY[g.story][2]){
+  g.story++;
+  skipped++;
+ }
+ if(skipped){save();notify('Osiągnięty próg renomy — cel pominięty.');}
+ return skipped;
+}
+function betaStoryPayout(amount){
+ const next=R[Math.min(R.length-1,g.unlocked.length)]?.unlock||850;
+ return Math.max(0,Math.min(Math.round(amount*.45),Math.max(200,Math.round(next*.10))));
+}
+function currentStory(){
+ skipCompletedRenownGoals();
+ if(g.story<STORY.length){
+  const [originalName,originalKey,originalTarget,reward]=STORY[g.story];
+  let name=originalName,key=originalKey,target=originalTarget;
+  if(key==='markets'&&g.markets>=target){key='contracts';target=Math.max(1,Math.min(12,3+Math.floor(g.story/20)));name='Zrealizuj '+target+' kontraktów w tej franczyzie';}
+  if(key==='run'){
+   const prior=g.storyRevenueCheckpoint;
+   const required=Math.max(1200,Math.min(Math.ceil(target*1.3),Math.round((R[Math.min(R.length-1,g.unlocked.length)].unlock||850)*.8)));
+   if(!prior||prior.index!==g.story||!Number.isFinite(prior.start))g.storyRevenueCheckpoint={index:g.story,start:g.businessRun,required};
+   const point=g.storyRevenueCheckpoint;
+   return{name:'Zarób dodatkowe '+cash(point.required)+' w tej franczyzie',key,target:point.required,reward:betaStoryPayout(reward),progress:Math.max(0,g.businessRun-point.start),endless:false};
+  }
+  return{name,key,target,reward:key==='renown'?0:betaStoryPayout(reward),progress:storyValue(key),endless:false};
+ }
+ const level=g.story-STORY.length+1;
+ const target=8+Math.min(30,Math.ceil(level/3));
+ const reward=betaStoryPayout(R.at(-1).unlock*.07);
+ return{name:'Wielkie wyzwanie #'+(14+level)+' — zrealizuj '+target+' kontraktów',key:'contracts',target,reward,progress:g.contracts,endless:true};
+}
+function claimStory(){
+ const q=currentStory();if(q.key==='renown'||q.progress<q.target)return;
+ g.story++;earn(q.reward,false,false);g.storyRevenueCheckpoint=null;
+ g.brandXp+=(q.endless||q.name.startsWith('Wielkie wyzwanie'))?3:2;
+ skipCompletedRenownGoals();
+ if(g.story<STORY.length&&STORY[g.story][1]==='run')currentStory();
+ notify('Nagroda za cel: '+cash(q.reward));save();render();
+}
+function genOffer(){
+ if(g.unlocked.length<4)return null;
+ const hi=g.unlocked.at(-1),lo=Math.max(2,hi-1);
+ const items=[{id:hi,n:Math.ceil(batchQty(hi)*(2+Math.random()*.55))},{id:lo,n:Math.ceil(batchQty(lo)*(1.2+Math.random()*.4))}];
+ const retail=items.reduce((sum,it)=>sum+R[it.id].price*it.n,0);
+ return{id:g.offerSeq++,items,reward:Math.round(retail*.78),seals:1+Math.floor(g.markets/7),science:1+Math.floor(g.markets/8)};
+}
+function fillOffers(){
+ if(stage()<2||g.offers.length||Date.now()<g.nextContractAt)return;
+ const offer=genOffer();if(offer)g.offers=[offer];
+}
+function fulfill(id){
+ const offer=g.offers.find(o=>o.id===id);
+ if(!offer||offer.items.some(it=>g.stocks[it.id]<it.n))return notify('Brakuje wymaganych zapasów.',true);
+ offer.items.forEach(it=>g.stocks[it.id]-=it.n);
+ earn(offer.reward,false,true); // brak mnożnika prestiżu dla kontraktów
+ g.seals+=offer.seals;g.earnedSeals+=offer.seals;
+ g.science+=offer.science;g.earnedScience+=offer.science;g.runScienceEarned+=offer.science;
+ g.contracts++;g.careerContracts++;g.offers=[];
+ g.nextContractAt=Date.now()+180000;
+ notify('Kontrakt: +'+cash(offer.reward)+'; kolejny za 3 min');save();render();
+}
+
+function techCost(key){const l=g.tech[key];return Math.ceil(2+2.5*l+.75*l*l)}
+function buyTech(key){if(stage()<3||!TECH[key])return;const c=techCost(key);if(g.science<c)return notify('Za mało punktów badań.',true);g.science-=c;g.tech[key]++;notify('Ulepszono: '+TECH[key].name);save();render()}
+function marketCost(){return Math.ceil(4*Math.pow(1.28,g.markets))}
+function marketCash(){return Math.round(65000*Math.pow(2.15,g.markets))}
+function buyMarket(){if(stage()<4)return;const sc=marketCost(),cc=marketCash();if(g.seals<sc||g.cash<cc)return notify('Brakuje pieniędzy lub pieczęci.',true);g.seals-=sc;g.cash-=cc;g.markets++;notify('🌍 Zdobyto nowy rynek!');save();render()}
+// Bar Inc 3.5: longer franchises reward increasingly more renown per run.
+const RENOWN_BASE=370000, RENOWN_EXP=.85;
+function renownGain(){return Math.max(0,Math.floor(Math.pow(Math.max(0,g.businessRun)/RENOWN_BASE,RENOWN_EXP)+1e-9))}
+function nextRenownThreshold(){return RENOWN_BASE*Math.pow(renownGain()+1,1/RENOWN_EXP)}
+function prestige(){const gain=renownGain();if(stage()<5||gain<1)return;confirmModal('Nowa franczyza','Zresetujesz gotówkę, zapasy, produkcję i personel. Zachowasz renomę, zdobyte miasta, badania i pieczęcie. Cele fabularne zaczną się od pierwszego zadania. Otrzymasz '+gain+' pkt renomy.',()=>{const keep={total:g.total,careerServed:g.careerServed,careerBatches:g.careerBatches,careerContracts:g.careerContracts,careerManual:g.careerManual,renown:g.renown+gain,prestiges:g.prestiges+1,seals:g.seals,earnedSeals:g.earnedSeals,science:g.science,earnedScience:g.earnedScience,markets:g.markets,tech:g.tech,careerTablesBought:g.careerTablesBought,brandXp:g.brandXp,daily:g.daily,weekly:g.weekly,tipSeen:g.tipSeen};g={...fresh(),...keep};g.cash=800+Math.floor(120*Math.sqrt(Math.max(0,g.renown)));g.unlocked=[0];g.stocks[0]=30+g.prestiges*4;dueReset();save();notify('Nowa franczyza! +'+gain+' pkt renomy');render()})}
+function migrateLegacy(old){if(!old||old.version!==2||!Array.isArray(old.stocks))throw new Error('To nie jest zapis Bar Inc. 2.8.');let d=fresh();d.cash=safeNum(old.cash,0);d.run=safeNum(old.runEarn,0);d.total=safeNum(old.totalEarn,0);d.served=safeInt(old.served);d.careerServed=safeInt(old.lifetimeServed);d.lost=safeInt(old.lost);d.rep=safeNum(old.rep,15,100);d.stocks=R.map((_,i)=>safeNum(old.stocks[i],0));d.unlocked=[0,...(old.unlocked||[]).filter(i=>Number.isInteger(i)&&i>0&&i<R.length)].filter((x,i,a)=>a.indexOf(x)===i).sort((a,b)=>a-b);for(const key of ['tables','bartenders','brewers','vats','marketing','waiters'])d.staff[key]=safeInt(old.staff?.[key]||STAFF[key].start,0,STAFF[key].max);d.renown=safeInt(old.renown);d.prestiges=safeInt(old.prestigeRuns);d.batches=safeInt(old.batches);d.careerBatches=safeInt(old.careerBatches||old.batches);d.contracts=safeInt(old.contractsDone);d.careerContracts=safeInt(old.careerContracts||old.contractsDone);d.earnedScience=safeInt(old.empire?.earnedScience);d.science=safeInt(old.empire?.science);d.seals=safeInt(old.empire?.seals);d.earnedSeals=safeInt(old.empire?.earnedSeals);d.markets=safeInt(old.empire?.tier);d.tech.yield=safeInt(old.empire?.tech?.yield);d.tech.speed=safeInt(old.empire?.tech?.speed);d.tech.profit=safeInt(old.empire?.tech?.profit);d.tech.auto=safeInt(old.empire?.tech?.shipping);d.brandXp=safeInt(old.questMerit);d.story=Math.min(STORY.length,safeInt(old.quests?.storyIndex));d.auto=d.staff.brewers>0;d.saveAt=Date.now();return d}
+let showTasks=false,showStaff=false,showAllRecipes=false;
+function currentGoal(){const s=currentStory();let p=clamp(s.progress/s.target*100,0,100),shown=Math.min(s.progress,s.target);return `<div class="goal-title">✦ NASTĘPNY CEL <span class="pill gold" style="margin-left:auto">${s.key==='renown'?'PRÓG RENOMY': '+'+cash(s.reward)}</span></div><div class="goal-body"><strong>${s.name}</strong>${s.key==='renown'?'<span class="tiny">Zdobądź renomę przez nową franczyzę. Osiągnięty próg zostanie automatycznie pominięty.</span>':s.progress>=s.target?button('Odbierz nagrodę','claimStory','','', 'smallbtn'):''}</div>${meter(p)}<div class="goal-meta"><span>${number(shown)} / ${number(s.target)}</span><span>${Math.round(p)}%</span></div>`}
+function renderNav(){
+ const ns=[['bar','BAR',0],['production','PRODUKCJA',8],['empire','IMPERIUM',39]];
+ if(stage()>=2)ns.push(['contracts','KONTRAKTY',24]);
+ if(stage()>=3)ns.push(['research','BADANIA',34]);
+ if(stage()>=4)ns.push(['expansion','EKSPANSJA',29]);
+ if(stage()>=5)ns.push(['prestige','FRANCZYZNA',39]);
+ if(!ns.some(item=>item[0]===tab))tab='empire';
+ for(const e of ['desktopNav','mobileNav']){
+  $(e).innerHTML=ns.map(([id,name,icon])=>`<button class="navbtn ${id===tab?'active':''}" data-act="tab" data-id="${id}" ${id===tab?'aria-current="page"':''}><span class="navicon">${sprite(icon,'sm')}</span><span>${name}</span></button>`).join('');
+ }
+ $('mobileNav').classList.toggle('many',ns.length>3);
+ document.body.classList.toggle('nav-expanded',ns.length>4);
+}
+function renderStats(){
+ const phase=stage();
+ const titles={bar:'Twój bar',production:'Produkcja',empire:'Imperium',contracts:'Kontrakty hurtowe',research:'Badania i technologie',expansion:'Światowa ekspansja',prestige:'Franczyzna'};
+ $('chapter').textContent='ROZDZIAŁ '+['I','II','III','IV','V','VI'][phase]+' · '+PHASES[phase].title.toUpperCase();
+ $('levelBadge').textContent='ETAP '+(phase+1)+'/6';
+ $('scienceBadge').hidden=phase<3;
+ $('scienceBadge').textContent='🧪 '+number(g.science)+' pkt badań';
+ $('pageTitle').textContent=titles[tab]||titles.bar;
+ $('stickyCashDesktop').textContent=cash(g.cash);
+ $('stickyCashMobile').textContent=compactAmount(g.cash);
+ $('stats').innerHTML=`<div class="stat"><div class="label">Gotówka</div><div class="big-number">${cash(g.cash)}</div><div class="small" style="color:var(--mint)">+${cash(g.incomeRate||0)} / min</div></div><div class="stat"><div class="label">Reputacja</div><div class="stat-value">${Math.round(g.rep)}%</div><div class="small">${g.queue.length} w kolejce · ×${multiplier().toFixed(2)}</div></div>`;
+}
+function nextHint(){if(!g.staff.brewers)return{title:'Zatrudnij piwowara',txt:'Jeden piwowar sam nastawia następne partie. Nie musisz stale klikać produkcji.',act:'buyStaff',arg:'brewers',cost:staffCost('brewers')};const needed=g.queue.find(q=>g.stocks[q.r]===0);if(needed)return{title:'Brakuje '+R[needed.r].name.toLowerCase(),txt:'Klient czeka na towar. Szybka dostawa natychmiast uzupełni zapasy.',act:'instant',arg:needed.r,cost:instantCost(needed.r)};if(g.queue.length>6&&g.sitting.length>=g.staff.tables*4-1&&g.staff.tables<STAFF.tables.max)return{title:'Brakuje miejsc przy stolikach',txt:'Goście blokują kolejkę, bo wszystkie miejsca są zajęte. Rozstaw dodatkowy stolik.',act:'buyStaff',arg:'tables',cost:staffCost('tables')};if(g.queue.length>6&&g.staff.bartenders<STAFF.bartenders.max)return{title:'Rozładuj kolejkę',txt:'Drugi barman przyspieszy sprzedaż i zmniejszy liczbę odejść.',act:'buyStaff',arg:'bartenders',cost:staffCost('bartenders')};if(g.sitting.length>=g.staff.tables*4-1&&g.staff.tables<STAFF.tables.max)return{title:'Dokup stolik',txt:'Więcej miejsc pozwoli obsłużyć kolejnych klientów.',act:'buyStaff',arg:'tables',cost:staffCost('tables')};let nr=nextRecipe();if(nr!==-1&&g.cash>R[nr].unlock*.4)return{title:'Odkryj '+R[nr].name,txt:'Kolejna receptura zwiększa potencjalne zarobki.',act:'tab',arg:'production',cost:null};return{title:'Buduj swoją markę',txt:'Pilnuj zapasów i zbieraj środki na kolejną recepturę.',act:'tab',arg:'production',cost:null}}
+function miniStock(){return `<div class="stock-mini"><div class="stock-head"><span>TRUNEK</span><span>STAN</span><span>CENA</span></div>${g.unlocked.map(id=>{
+ const qty=g.stocks[id],cls=qty<=0?'stock-empty':qty<=3?'stock-warn':'';
+ return `<div class="stock-row ${cls}" title="${R[id].name}: ${number(qty)} szt., cena ${cash(R[id].price)}"><span class="stock-name">${DRINK_EMOJIS[id]} ${R[id].name}</span><b class="stock-qty">${number(qty)}</b><b class="stock-price">${cash(R[id].price)}</b></div>`
+}).join('')}</div>`}
+function barScreen(){
+ const h=nextHint(),occupied=g.sitting.length,full=g.staff.tables*4;
+ const rooms=Math.max(1,Math.ceil(g.staff.tables/12));g.roomView=Math.min(Math.max(0,g.roomView||0),rooms-1);
+ const ri=g.roomView+1,from=g.roomView*12+1,to=Math.min(g.staff.tables,ri*12);
+ const roomNav=rooms>1?`<div class="room-switch"><span class="room-label">Sala ${ri} z ${rooms} · stoliki ${from}–${to}</span>${button('◀','roomPrev','',g.roomView<=0,'smallbtn secondary')}${button('▶','roomNext','',g.roomView>=rooms-1,'smallbtn secondary')}</div>`:'';
+ return `<div class="cols bar-layout"><div><div class="panel warm"><div class="section-head"><h2>Twoja karczma</h2><span class="pill green">● OTWARTE</span></div><div class="scene"><canvas id="tavern" width="640" height="455" aria-label="Animowana sala ${ri}: 12 pozycji stolików"></canvas><div class="scene-corner">BAR INC. / SALA ${ri}</div></div>${roomNav}<div class="scene-bottom"><div class="minirow"><span class="small">Kolejka</span><b>${g.queue.length}</b><div class="queue-pips">${Array.from({length:Math.min(12,Math.max(0,g.queue.length))},()=>`<i class="pip ${g.queue.length>8?'bad':g.queue.length>4?'warn':''}"></i>`).join('')}</div></div><span class="small">Zajętych miejsc: <b>${occupied}/${full}</b></span></div></div><div class="panel"><div class="section-head"><h2>Co robić teraz?</h2><span class="pill">PODPOWIEDŹ</span></div><h3 style="margin:0 0 5px">${h.title}</h3><p class="note">${h.txt}</p>${button(h.cost!==null?'Wykonaj · '+cash(h.cost):'Przejdź do produkcji',h.act,h.arg,h.cost!=null&&g.cash<h.cost,'wide')}</div></div><div class="stack"><div class="panel"><div class="section-head"><h2>Rozbudowa baru</h2><span class="small">Najważniejsze</span></div>${upgradeRow('tables')}${upgradeRow('bartenders')}${upgradeRow('marketing')}${upgradeRow('waiters')}<div class="tiny" style="margin-top:9px">Kadzie i piwowarzy: zakładka Produkcja.</div></div><div class="panel"><div class="section-head"><h2>Magazyn i cennik</h2><span class="pill">SZT. / ZŁ</span></div>${miniStock()}<div class="tiny" style="margin-top:8px">${g.queue.some(q=>g.stocks[q.r]===0)?'⚠ Brakuje zamawianych trunków.':'✓ Zapas aktualizuje się po sprzedaży.'}</div></div></div></div>`
+}
+function upgradeRow(key){const p=STAFF[key],owned=g.staff[key],cost=staffCost(key),limit=staffBuyLimit(key),atMax=owned>=limit,limited=key==='vats'||key==='brewers';return `<div class="upgrade">${sprite(p.sprite,'sm')}<div class="copy"><strong>${p.name} <span style="color:var(--gold)">×${owned}${limited?' / '+limit:''}</span></strong><p>${p.info}${limited?' · limit: '+limit:''}</p></div>${button(atMax?(key==='brewers'?(g.staff.vats<vatLevelLimit()?'KUP KADŹ':g.unlocked.length<R.length?'ODKRYJ TRUNEK':'MAX'):key==='vats'&&g.unlocked.length<R.length?'ODKRYJ TRUNEK':'MAX'):'+1 · '+cash(cost),'buyStaff',key,atMax||g.cash<cost,'smallbtn')}</div>`}
+function recipeCard(id){const r=R[id],locked=!g.unlocked.includes(id),onJob=g.jobs.some(j=>j.id===id),pct=g.jobs.find(j=>j.id===id);return `<div class="product ${locked?'product-locked':''}"><div class="product-top">${sprite(r.sprite)}<div class="product-meta"><h3>${r.name}</h3><p>${locked?'WYMAGA ODKRYCIA':`Sprzedaż: ${cash(r.price)}/szt.`}</p></div><div class="product-count">${locked?'🔒':number(g.stocks[id])}</div></div>${locked?`<div class="note">Odblokowanie: ${cash(r.unlock)}</div>${button('Odkryj recepturę','unlock','',g.cash<r.unlock,'wide')}`:`<div class="inventory-row"><span>Partia: ${batchQty(id)} szt.</span><span>Czas: ${time(brewSeconds(id))}</span></div><div class="product-btns">${button('Warz · '+cash(r.cost),'brew',id,g.jobs.length>=g.staff.vats||g.cash<r.cost,'smallbtn')}${button('⚡ Od ręki · '+cash(instantCost(id)),'instant',id,g.cash<instantCost(id),'smallbtn secondary')}</div><div class="brew-status tiny">${pct?`W kadzi: jeszcze ${time(pct.left)}`:'&nbsp;'}</div>`}</div>`}
+function vatSlots(){
+ return `<div class="vat-grid">${Array.from({length:g.staff.vats},(_,i)=>{
+  const job=g.jobs[i];
+  const name=job?R[job.id].name:'Wolna kadź';
+  const pct=job?Math.max(0,Math.min(100,100*(1-job.left/job.total))):0;
+  return `<div class="vat-slot ${job?'vat-running':'vat-free'}" aria-label="Kadź ${i+1}: ${name}">
+    <div class="vat-slot-head"><b>Kadź ${i+1}</b><span class="vat-state">${job?'● WARZENIE':'○ WOLNA'}</span></div>
+    <div class="vat-product">${job?DRINK_EMOJIS[job.id]+' '+name:'—'}</div>
+    <div class="vat-counter">${job?'Pozostało '+time(job.left):'Gotowa do pracy'}</div>
+    ${meter(pct,'greenfill')}
+  </div>`;
+ }).join('')}</div>`;
+}
+function productionScreen(){const next=nextRecipe(),active=g.jobs,stock=g.unlocked.reduce((n,id)=>n+g.stocks[id],0),visible=g.unlocked.slice();return `<div class="cols"><div><div class="panel"><div class="section-head"><h2>Produkty i receptury</h2><span class="pill gold">${g.unlocked.length} / ${R.length} ODKRYTYCH</span></div><p class="note">Zaczynasz od piwa. Nowe alkohole odkrywaj po kolei. Klienci preferują droższe produkty, więc dbaj o ich zapasy.</p><div class="recipe-grid">${visible.map(recipeCard).join('')}${next>=0?recipeCard(next):''}</div></div></div><div class="stack"><div class="panel"><div class="section-head"><h2>Praca browaru</h2><span class="pill green">${active.length}/${g.staff.vats} KADZI · LIMIT ${vatLevelLimit()}</span></div>${vatSlots()}<p class="tiny">Odblokowane trunki: ${g.unlocked.length}. Limit kadzi: ${g.unlocked.length} × 2 = ${vatLevelLimit()}. Limit piwowarów: ${brewerLevelLimit()} (tyle, ile posiadanych kadzi).${g.staff.vats>vatLevelLimit()||g.staff.brewers>brewerLevelLimit()?' Wcześniej kupione nadwyżkowe kadzie i piwowarzy zostają zachowane.':''}</p><div class="line"></div>${upgradeRow('vats')}${upgradeRow('brewers')}<div class="row" style="margin-top:12px"><div><b style="font-size:12px">Automatyczna produkcja</b><p class="tiny" style="margin:0">Wymaga piwowara · te same napoje mogą zająć kilka kadzi</p></div>${button(g.auto?'● WŁ.':'○ WYŁ.','toggleAuto','',!g.staff.brewers,'smallbtn '+(g.auto?'blue':'secondary'))}</div>${stage()>=2?`<div class="line"></div><div class="small">Priorytet automatu</div><button type="button" class="priority-trigger" data-act="openPriority" aria-haspopup="dialog"><span class="priority-current"><span class="priority-trigger-icon">${g.focus===-1?'⚙':(DRINK_EMOJIS[g.focus]||'🍺')}</span><span class="priority-trigger-text"><small>AKTUALNY PRIORYTET</small><b>${g.focus===-1?'Automatycznie: największe braki':(R[g.focus]?.name||'Automatycznie: największe braki')}</b></span></span><span class="priority-chevron" aria-hidden="true">▾</span></button>`:''}</div><div class="panel"><div class="section-head"><h2>Magazyn</h2><span class="pill">${number(stock)} SZT.</span></div>${g.unlocked.slice().reverse().map(id=>`<div class="inventory-row"><span>${R[id].name}</span><b style="color:${g.stocks[id]<3?'#f49c85':'var(--white)'}">${number(g.stocks[id])}</b></div>`).join('')}</div></div></div>`}
+
+function openPriorityModal(){
+ if(stage()<2)return;
+ const option=(id,emoji,name,detail)=>`<button type="button" class="priority-option ${g.focus===id?'is-selected':''}" data-act="choosePriority" data-id="${id}" role="radio" aria-checked="${g.focus===id}"><span class="priority-option-emoji" aria-hidden="true">${emoji}</span><span class="priority-option-copy"><strong>${name}</strong>${detail?`<small>${detail}</small>`:''}</span><span class="priority-check" aria-hidden="true">${g.focus===id?'✓':''}</span></button>`;
+ const choices=option(-1,'⚙','Automatycznie: największe braki','Browar sam wybiera trunki, których najbardziej brakuje')+g.unlocked.map(id=>option(id,DRINK_EMOJIS[id]||'🍺',R[id].name,'Priorytet przy automatycznym warzeniu')).join('');
+ openModal(`<div class="priority-dialog"><div class="priority-dialog-head"><span class="eyebrow">✦ BROWAR / AUTOMATYZACJA</span><h2>Wybierz priorytet</h2><p>Wybierz ulubiony trunek albo pozostaw wybór automatyce. Pozostałe napoje nadal mogą być produkowane.</p></div><div class="priority-options" role="radiogroup" aria-label="Priorytet automatycznej produkcji">${choices}</div><div class="priority-dialog-foot"><span class="small">Zapis nastąpi po wyborze.</span>${button('Zamknij','close','','','secondary smallbtn')}</div></div>`);
+}
+function choosePriority(id){
+ const chosen=Number(id);
+ if(!Number.isInteger(chosen)||(chosen!==-1&&!g.unlocked.includes(chosen)))return;
+ g.focus=chosen;save();closeModal();render();notify('Priorytet produkcji zapisany.');
+}
+
+function phaseProgress(){const n=stage();if(n>=PHASES.length-1)return `<div class="hint greenhint">Wszystkie podstawowe systemy odblokowane. Teraz buduj długoterminowe imperium!</div>`;const next=PHASES[n+1];return `<div class="hint"><b>🔒 Następne odblokowanie: ${next.title}</b><br>${next.desc}<br>Łączny utarg wymagany: <b>${cash(next.threshold)}</b>${meter(g.total/next.threshold*100)}<div class="tiny">Postęp: ${Math.min(100,Math.round(g.total/next.threshold*100))}%</div></div>`}
+function questGroup(gr,type){return `<h3 style="margin:12px 0 4px">${type==='daily'?'Dzisiaj':'W tym tygodniu'}</h3>${gr.tasks.map((q,i)=>{const n=questProgress(gr,q),done=n>=q.target;return `<div class="offer"><div class="row"><b style="font-size:12px">${q.name}</b><span class="pill">+${cash(q.reward)}</span></div><div class="small" style="margin-top:4px">${number(Math.min(n,q.target))} / ${number(q.target)} · +1 XP marki${type==='weekly'?' i 1 pkt badań':''}</div>${meter(n/q.target*100,'greenfill')}<div style="margin-top:8px">${button(q.claimed?'✓ Odebrane':'Odbierz nagrodę','quest',type+':'+i,q.claimed||!done,'smallbtn')}</div></div>`}).join('')}`}
+function taskPanel(){return `<div class="panel"><div class="section-head"><h2>Zadania i nagrody</h2><span class="pill gold">XP marki ${g.brandXp}</span></div><p class="note">Jedno główne zadanie widzisz zawsze na górze. Tutaj czekają dodatkowe wyzwania.</p>${button(showTasks?'Ukryj wyzwania ▲':'Pokaż codzienne i tygodniowe ▼','toggleTasks','','','secondary wide')}${showTasks?questGroup(g.daily,'daily')+(stage()>=2?questGroup(g.weekly,'weekly'):'<p class="small">Tygodniowe odblokują się wraz z hurtownią.</p>'):''}</div>`}
+function contractPanel(){return `<div class="panel"><div class="section-head"><h2>📦 Kontrakty hurtowe</h2><span class="pill gold">${number(g.seals)} pieczęci</span></div><div class="note">Wysyłaj zestawy produktów. Zdobędziesz środki na badania i zdobywanie rynków.</div>${!g.offers.length?'<div class="empty">'+(Date.now()<g.nextContractAt?'Kolejny kontrakt za '+time((g.nextContractAt-Date.now())/1000)+'.':'Odblokuj shot whisky, aby przyjmować zamówienia.')+'</div>':g.offers.slice(0,1).map(o=>{const ready=o.items.every(it=>g.stocks[it.id]>=it.n);return `<div class="offer contract-item"><div class="row"><b>Kontrakt #${o.id}</b><span class="pill green">+${cash(o.reward)}</span></div><div class="contract-lines">${o.items.map(it=>`<div class="inventory-row"><span>${R[it.id].name}</span><span style="color:${g.stocks[it.id]>=it.n?'var(--mint)':'var(--red)'}">${number(g.stocks[it.id])}/${number(it.n)}</span></div>`).join('')}</div><div class="contract-footer"><p class="tiny">Nagroda: ${o.seals} pieczęci · ${o.science} pkt badań</p>${button('Wyślij zamówienie','fulfill',o.id,!ready,'smallbtn')}</div></div>`}).join('')}</div>`}
+function researchPanel(){return `<div class="empire-box"><div class="section-head"><h2>🧪 Laboratorium</h2><span class="pill gold">${g.science} punktów</span></div><p class="note">Badania zostają na zawsze, także po otwarciu nowej franczyzy.</p>${Object.keys(TECH).map(key=>{const t=TECH[key],c=techCost(key);return `<div class="upgrade">${sprite(t.sprite,'sm')}<div class="copy"><strong>${t.name} · poz. ${g.tech[key]}</strong><p>${t.info}</p></div>${button('+'+c+' pkt','tech',key,g.science<c,'smallbtn')}</div>`}).join('')}</div>`}
+function marketPanel(){const name=TOWN[g.markets%TOWN.length],tier=1+Math.floor(g.markets/TOWN.length),needSeals=marketCost(),needCash=marketCash();return `<div class="empire-box"><div class="section-head"><h2>🌍 Ekspansja</h2><span class="pill green">${g.markets} RYNKÓW</span></div><p class="note">Nowe rynki dają trwały mnożnik zarobków. Po zdobyciu całego świata pojawiają się kolejne poziomy ekspansji.</p><div class="minirow">${sprite(29)}<div><b>${name}${tier>1?' · poziom '+tier:''}</b><div class="small">Kolejny rynek do przejęcia</div></div></div><p class="small">Koszt: ${cash(needCash)} i ${number(needSeals)} pieczęci</p>${button('Otwórz nowy rynek','market','',g.cash<needCash||g.seals<needSeals,'wide')}</div>`}
+function prestigePanel(){const gain=renownGain();return `<div class="empire-box"><div class="section-head"><h2>👑 Nowa franczyza</h2><span class="pill gold">Renoma ${g.renown}</span></div><p class="note">Zacznij od nowa, ale mocniejszy. Premia renomy: +2,5% × pierwiastek z punktów. Bez lawinowego mnożnika. Zachowujesz wszystkie rynki, badania i XP marki.</p><div class="metric-row"><div class="metric"><small>Bonus renomy</small><strong>+${(2.5*Math.sqrt(g.renown)).toFixed(1)}%</strong></div><div class="metric"><small>Za reset otrzymasz</small><strong>+${gain}</strong></div></div><div class="tiny" style="margin:12px 0 6px">Do kolejnego punktu: <b>${cash(Math.max(0,nextRenownThreshold()-g.businessRun))}</b> — próg: ${cash(nextRenownThreshold())}</div>${meter(Math.min(100,Math.max(0,100*(g.businessRun-RENOWN_BASE*Math.pow(Math.max(0,gain),1/RENOWN_EXP))/(nextRenownThreshold()-RENOWN_BASE*Math.pow(Math.max(0,gain),1/RENOWN_EXP)))))}<p class="note" style="margin-top:8px">Dłuższy cykl daje korzystniejszy przelicznik renomy. Pierwszy punkt: 370 tys. 💵. Punkty przyznawane są przy resecie, nie w trakcie gry.</p>${button('Rozpocznij nową franczyzę','prestige','',gain<1,'wide')}</div>`}
+function empireScreen(){return `<div class="cols"><div><div class="panel warm"><div class="section-head"><h2>Rozwój firmy</h2><span class="pill">ETAP ${stage()+1}/6</span></div><p class="note">${PHASES[stage()].desc} Nowe funkcje nie zalewają ekranu — pojawiają się wraz z doświadczeniem.</p><div class="check"><span>✓</span><span>Bar i własny browar</span></div>${PHASES.slice(2).map((p,i)=>`<div class="check ${stage()>=i+2?'ok':''}"><span>${stage()>=i+2?'✓':'🔒'}</span><span>${p.title}</span><span class="tiny" style="margin-left:auto">${stage()>=i+2?'ODKRYTE':cash(p.threshold)}</span></div>`).join('')}${phaseProgress()}</div></div><div class="stack">${taskPanel()}<div class="panel"><h2 style="font-size:15px;margin-top:0">Historia imperium</h2><div class="inventory-row"><span>Łączny utarg</span><b>${cash(g.total)}</b></div><div class="inventory-row"><span>Utarg aktualnej franczyzy</span><b>${cash(g.run)}</b></div><div class="inventory-row"><span>Łączne punkty renomy</span><b>${number(g.renown)}</b></div><div class="inventory-row"><span>Obsłużonych klientów</span><b>${number(g.careerServed)}</b></div><div class="inventory-row"><span>Kontrakty</span><b>${number(g.careerContracts)}</b></div><div class="inventory-row"><span>Nowe franczyzy</span><b>${g.prestiges}</b></div></div></div></div>`}
+function contractsScreen(){
+ const ready=g.offers.filter(o=>o.items.every(it=>g.stocks[it.id]>=it.n)).length;
+ return `<div class="page-intro"><div><h2>📦 Kontrakty hurtowe</h2><p>Realizuj większe zamówienia, korzystając z zapasów browaru. Dostajesz gotówkę, pieczęcie eksportowe i punkty badań. Jeśli brakuje produktów, uruchom produkcję.</p></div></div><div class="page-grid"><div>${contractPanel()}</div><div class="stack"><div class="panel"><div class="section-head"><h2>Twoje zasoby</h2></div><div class="resource-summary"><div class="metric"><small>Pieczęcie eksportowe</small><strong>${number(g.seals)}</strong></div><div class="metric"><small>Punkty badań</small><strong>${number(g.science)}</strong></div></div>${button('Przejdź do produkcji','tab','production',false,'wide secondary')}<p class="small" style="margin-bottom:0">Brakujące ilości pod każdym kontraktem pokazano na czerwono.</p></div></div></div>`;
+}
+function researchScreen(){
+ return `<div class="page-intro"><div><h2>🧪 Badania i technologie</h2><p>Inwestuj punkty badań w trwałe usprawnienia. Punkty otrzymasz przede wszystkim za zrealizowane kontrakty i zadania. Technologie pozostają po otwarciu nowej franczyzy.</p></div><span class="pill science-tag">${number(g.science)} PUNKTÓW</span></div><div class="page-grid"><div>${researchPanel()}</div><div class="stack"><div class="panel"><h2 style="font-size:15px;margin-top:0">Jak zdobywać punkty?</h2><p class="note">Zrealizuj kontrakty hurtowe albo ukończ tygodniowe wyzwania w Imperium.</p>${button('Zobacz kontrakty','tab','contracts',false,'wide secondary')}</div><div class="panel"><h2 style="font-size:15px;margin-top:0">Twój rozwój</h2>${Object.keys(TECH).map(key=>`<div class="inventory-row"><span>${TECH[key].name}</span><b>Poziom ${g.tech[key]}</b></div>`).join('')}</div></div></div>`;
+}
+function expansionScreen(){
+ const next=TOWN[g.markets%TOWN.length];
+ return `<div class="page-intro"><div><h2>🌍 Światowa ekspansja</h2><p>Otwieraj kolejne rynki, buduj międzynarodową markę i zdobywaj stałe premie do zarobków. Potrzebujesz gotówki i pieczęci z kontraktów.</p></div><span class="pill green">${number(g.markets)} RYNKÓW</span></div><div class="page-grid"><div>${marketPanel()}</div><div class="stack"><div class="panel"><div class="section-head"><h2>Bilans ekspansji</h2></div><div class="metric-row"><div class="metric"><small>Bonus przychodów</small><strong>+${(g.markets*.75).toFixed(1)}%</strong></div><div class="metric"><small>Pieczęcie</small><strong>${number(g.seals)}</strong></div></div><p class="small">Najbliższy rynek: <b>${next}</b>.</p>${button('Zdobądź pieczęcie w kontraktach','tab','contracts',false,'wide secondary')}</div></div></div>`;
+}
+function prestigeScreen(){
+ return `<div class="page-intro"><div><h2>👑 Franczyzna</h2><p>Zamień wypracowany utarg na stałe przyspieszenie rozwoju. To odrębny system długoterminowy: przed resetem warto dokończyć kontrakty i zrobić kopię zapisu.</p></div><span class="pill gold">${number(g.prestiges)} RESETÓW</span></div><div class="page-grid"><div>${prestigePanel()}</div><div class="stack"><div class="panel"><h2 style="font-size:15px;margin-top:0">Co zostaje po resecie?</h2><div class="check ok">✓ Renoma i mnożnik dochodów</div><div class="check ok">✓ Technologie i badania</div><div class="check ok">✓ Rynki, pieczęcie i XP marki</div><div class="check">↻ Gotówka, zapasy i zatrudnieni pracownicy zaczynają od początku</div>${button('Przejdź do Imperium','tab','empire',false,'wide secondary')}</div></div></div>`;
+}
+function queueUnlockNotices(){
+ if(!unlockNoticesReady||openedModal)return;
+ for(let s=2;s<=stage();s++){
+  if(!g.tipSeen['stage'+s] && !unlockQueue.includes(s))unlockQueue.push(s);
+ }
+ showNextUnlock();
+}
+function showNextUnlock(){
+ if(openedModal||unlockQueue.length===0)return;
+ const s=unlockQueue.shift();g.tipSeen['stage'+s]=true;save();
+ const title={2:'Kontrakty hurtowe',3:'Badania i technologie',4:'Światowa ekspansja',5:'Franczyzna'}[s];
+ const info={2:'Zrealizuj duże zamówienia i zdobywaj pieczęcie eksportowe oraz punkty badań.',3:'Odblokowano laboratorium i trwałe ulepszenia firmy, zwiększających wydajność firmy.',4:'Możesz zdobywać kolejne miasta i zwiększać przychody całego imperium.',5:'Zamień utarg franczyzy na trwałe punkty renomy, bez utraty badań i rynków.'}[s];
+ openModal(`<div class="eyebrow">NOWA MOŻLIWOŚĆ ODBLOKOWANA</div><h2 style="color:var(--gold)">✦ ${title}</h2><p>${info}</p><p class="small">Nowa kategoria pojawiła się w menu.</p><div class="modal-actions">${button('Świetnie!','unlockClose','','','wide')}</div>`);
+}
+function initializeUnlockNotices(){
+ for(let i=2;i<=stage();i++)g.tipSeen['stage'+i]=true;
+ unlockNoticesReady=true;
+}
+function render(){
+ const oldScroll=window.scrollY;
+ dueReset();fillOffers();renderNav();renderStats();
+ $('goal').innerHTML=currentGoal();
+ const screens={bar:barScreen,production:productionScreen,empire:empireScreen,contracts:contractsScreen,research:researchScreen,expansion:expansionScreen,prestige:prestigeScreen};
+ $('content').innerHTML=(screens[tab]||screens.bar)();drawScene();
+ // Brak przeskoków przy odświeżaniu ekranu co sekundę.
+ const wanted=keepScroll!==null?keepScroll:oldScroll;keepScroll=null;
+ window.scrollTo({top:wanted,behavior:'instant'});
+ if(unlockNoticesReady && !openedModal)queueUnlockNotices();
+}
+function openModal(html){openedModal='modal';$('modalHost').innerHTML=`<div class="modalwrap" role="dialog" aria-modal="true"><div class="modal">${html}</div></div>`}
+function closeModal(){openedModal='';$('modalHost').innerHTML='';if(unlockNoticesReady)setTimeout(queueUnlockNotices,0)}
+function confirmModal(title,body,fn){window.pendingConfirm=fn;openModal(`<h2>${title}</h2><p>${body}</p><div class="modal-actions">${button('Anuluj','close','','','secondary')}${button('Potwierdzam','confirm','','','danger')}</div>`)}
+function intro(){openModal(`<div class="minirow" style="margin-bottom:13px">${sprite(0,'lg')}<div><div class="eyebrow">WITAJ W BAR INC.</div><h2 style="margin:4px 0">Twój własny bar</h2></div></div><p>W tej grze budujesz imperium alkoholowe — od jednego piwa aż po galaktyczne cysterny. Ale nie musisz rozumieć wszystkiego od razu.</p><div class="empire-box"><b>1 · 🧑‍🍳 Obsługuj klientów</b><div class="small">Barman sprzedaje napoje automatycznie. Obserwuj kolejkę i zarabiaj.</div></div><div class="empire-box"><b>2 · 🍺 Nastaw piwo</b><div class="small">Otwórz Produkcję: partie warzą się szybciej, ale dają mniej sztuk. Piwowar zautomatyzuje pracę.</div></div><div class="empire-box"><b>3 · ✦ Realizuj jeden cel</b><div class="small">Zadanie zawsze widzisz na górze. Nowe możliwości odblokujesz po rozwoju firmy.</div></div><div class="modal-actions">${button('Rozumiem, zaczynam!','start','','','wide')}</div>`)}
+function settingsModal(){let legacy=!!STORE.getItem(LEGACY);openModal(`<h2>⚙ Opcje gry</h2><p><b>Bar Inc. 6.0 BETA</b> · ta sama rozgrywka działa na PC i iPhonie. Zapis przechowywany jest lokalnie w tej przeglądarce.</p><div class="empire-box"><h3>💾 Zapis i kopia zapasowa</h3><p class="small">Przy zmianie urządzenia pobierz JSON, a potem go zaimportuj.</p><div class="minirow" style="flex-wrap:wrap">${button('Pobierz JSON','export','','','smallbtn')}${button('Importuj JSON','import','','','smallbtn secondary')}${button('Zapisz','save','','','smallbtn secondary')}</div></div>${legacy?`<div class="empire-box"><h3>🎮 Stary Bar Inc. 2.8</h3><p class="small">Wykryto poprzednią wersję. Możesz opcjonalnie przenieść jej pieniądze, produkty, personel i prestiż. Zastąpi to bieżący postęp w Bar Inc. 6.0 BETA.</p>${button('Przenieś postęp 2.8','migrate','','','smallbtn secondary')}</div>`:''}<div class="empire-box"><h3>📘 Instrukcja</h3><p class="small">Możesz otworzyć samouczek w dowolnej chwili.</p>${button('Pokaż samouczek','intro','','','smallbtn secondary')}</div><div class="empire-box"><h3>⚠ Reset zapisu</h3><p class="small">Kasuje cały lokalny postęp tej wersji.</p>${button('Nowa gra','reset','','','smallbtn danger')}</div><div class="modal-actions">${button('Zamknij','close','','','secondary')}</div>`)}
+function exportSave(){save();const blob=new Blob([JSON.stringify(g,null,2)],{type:'application/json'});const url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='Bar_Inc_zapis_'+dateKey()+'.json';document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1200);notify('Pobrano kopię zapisu.')}
+function doImport(obj){let parsed=obj?.v===3?sanitize(obj):migrateLegacy(obj);confirmModal('Wczytać zapis?','Ten zapis zastąpi bieżący postęp w Bar Inc. 6.0 BETA. Zrób wcześniej kopię JSON, jeśli chcesz go zachować.',()=>{g=parsed;dueReset();initializeUnlockNotices();save();notify('Zapis wczytany pomyślnie.');render()})}
+function doReset(){confirmModal('Nowa gra','Wszystkie postępy Bar Inc. 4.0 na tym urządzeniu zostaną skasowane. Tej operacji nie da się cofnąć.',()=>{g=fresh();dueReset();save();tab='bar';render();intro()})}
+function clicked(act,id){switch(act){case'roomPrev':g.roomView=Math.max(0,(g.roomView||0)-1);save();render();break;case'roomNext':g.roomView=Math.min(Math.ceil(g.staff.tables/12)-1,(g.roomView||0)+1);save();render();break;case'tab':{if(tab!==id){tabScroll[tab]=window.scrollY;const former=window.scrollY;tab=id;keepScroll=tabScroll[id]??former;}render();break;}case'buyStaff':buyStaff(id);break;case'unlock':unlock();break;case'brew':if(brew(Number(id))){save();render()}else notify('Brak pieniędzy albo wolnej kadzi.',true);break;case'instant':instant(Number(id));break;case'openPriority':openPriorityModal();break;case'choosePriority':choosePriority(id);break;case'toggleAuto':g.auto=!g.auto;save();render();break;case'toggleStaff':showStaff=!showStaff;render();break;case'toggleTasks':showTasks=!showTasks;render();break;case'quest':{const [p,i]=id.split(':');claimQuest(p,Number(i));break}case'claimStory':claimStory();break;case'fulfill':fulfill(Number(id));break;case'tech':buyTech(id);break;case'market':buyMarket();break;case'prestige':prestige();break;case'settings':settingsModal();break;case'intro':intro();break;case'start':STORE.setItem(TUTORIAL,'yes');closeModal();render();break;case'close':closeModal();break;case'unlockClose':closeModal();break;case'confirm':{const fn=window.pendingConfirm;window.pendingConfirm=null;closeModal();if(typeof fn==='function')fn();break}case'export':exportSave();break;case'import':$('importFile').click();break;case'migrate':try{doImport(JSON.parse(STORE.getItem(LEGACY)))}catch(e){notify('Nie znaleziono poprawnego starego zapisu.',true)}break;case'reset':doReset();break;case'save':save();notify('Zapisano grę.');break}}
+document.addEventListener('click',e=>{const el=e.target.closest('[data-act]');if(!el||el.disabled)return;clicked(el.dataset.act,el.dataset.id)});
+document.addEventListener('change',e=>{if(e.target.id==='importFile'){let file=e.target.files?.[0];if(!file)return;file.text().then(t=>{try{doImport(JSON.parse(t))}catch(err){notify('Błąd zapisu: '+err.message,true)}});e.target.value=''}});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&openedModal)closeModal()});
+// Rysowanie powiększonej sali 640×455: 12 stolików w układzie 4×3.
+function pixelCanvas(){return $('tavern')}
+function drawScene(ts=performance.now()){const c=pixelCanvas();if(!c)return;const ctx=c.getContext('2d',{alpha:false});ctx.imageSmoothingEnabled=false;
+ const dt=scenePrevTs?Math.min(.06,(ts-scenePrevTs)/1000):1/60;scenePrevTs=ts;const t=ts/1000,lerpAmt=1-Math.exp(-dt*9);
+ const rect=(x,y,w,h,col)=>{ctx.fillStyle=col;ctx.fillRect(Math.round(x),Math.round(y),Math.round(w),Math.round(h))};
+ const shade=(x,y,w,h,a=.18)=>{ctx.fillStyle=`rgba(0,0,0,${a})`;ctx.fillRect(Math.round(x),Math.round(y),Math.round(w),Math.round(h))};
+ const mug=(x,y)=>{rect(x-4,y-7,8,9,'#ece3c1');rect(x-2,y-5,4,5,'#d68f38');rect(x+4,y-5,2,4,'#ece3c1');rect(x-3,y-8,6,2,'#fff3d6')};
+ const candle=(x,y,phase)=>{rect(x-1,y-10,2,10,'#ead7a4');rect(x-2,y-12,4,3,'#ffcb67');rect(x-1,y-14,2,2,'#ffe9a5');ctx.fillStyle=`rgba(255,213,110,${0.12+0.08*Math.sin(t*5+phase)})`;ctx.fillRect(Math.round(x-8),Math.round(y-16),16,10)};
+ const bubble=(x,y,emoji)=>{rect(x-11,y-39,22,16,'#47372a');rect(x-10,y-38,20,14,'#fff8d9');rect(x-2,y-24,4,4,'#fff8d9');ctx.fillStyle='#2d1f15';ctx.font='12px serif';ctx.fillText(emoji,Math.round(x-6),Math.round(y-27))};
+ const pathPoint=(pts,p)=>{const span=pts.length-1;const raw=(p%1+1)%1*span;const i=Math.floor(raw);const f=raw-i;const a=pts[i],b=pts[i+1]||pts[i];return[a[0]+(b[0]-a[0])*f,a[1]+(b[1]-a[1])*f]};
+ const roomIndex=Math.min(g.roomView||0,Math.max(0,Math.ceil(g.staff.tables/12)-1));
+ const seated=g.sitting.filter(q=>(q.room||0)===roomIndex).slice(0,48);
+ const tableSeats=Array.from({length:12},()=>new Set());seated.forEach(q=>{const seat=q.seat-roomIndex*48;if(seat>=0&&seat<48)tableSeats[Math.floor(seat/4)].add(seat%4)});
+ // Tło: drewniane ściany, belki i kamienna posadzka.
+ rect(0,0,640,455,'#151d26');rect(0,0,640,86,'#403a33');for(let y=0;y<86;y+=17){rect(0,y,640,2,'#2a2b30');for(let x=(y%34?0:-22);x<660;x+=44){rect(x,y+2,2,15,'#574a3b');rect(x+5,y+8,3,3,'#6f5b3f')}}
+ for(let x of [0,158,319,480,637])rect(x,0,3,86,'#2a231f');
+ rect(0,86,640,369,'#51595c');for(let y=86;y<455;y+=23){for(let x=0;x<640;x+=32){let ix=x+((y/23|0)%2)*16;rect(ix,y,30,21,(Math.floor(x/32)+Math.floor(y/23))%3?'#505c60':'#566268');rect(ix,y,30,2,'#68767b')}}
+ // Dywany i cienie.
+ for(let i=0;i<4;i++){let x=22+i*153;shade(x+10,219,104,193,.12);rect(x,214,124,213,i%2?'#7b5157':'#47596f');rect(x+5,219,114,203,'#b48a63');rect(x+10,224,104,193,i%2?'#765062':'#4a6179');for(let q=0;q<5;q++)rect(x+10+q*19,225,6,4,'#c6a079')}
+ // Okna, tablice i dekoracje.
+ for(let x of [52,230,413]){rect(x,13,91,62,'#a27248');rect(x+7,19,77,48,'#243043');rect(x+10,22,71,41,'#78a3b4');rect(x+43,22,5,41,'#dfca90');rect(x+10,42,71,4,'#dfca90');rect(x+18,22,20,16,'#90c0c6');ctx.fillStyle='rgba(255,244,188,.08)';ctx.fillRect(x+12,24,67,37)}
+ rect(182,16,33,23,'#65422c');rect(185,19,27,17,'#24313a');ctx.fillStyle='#efd8a8';ctx.font='bold 7px monospace';ctx.fillText('MENU',189,30);rect(365,16,30,22,'#5e422f');rect(369,20,22,14,'#7e583a');rect(368,34,24,2,'#c49a62');
+ // Drzwi i beczka przy wejściu.
+ rect(567,11,62,106,'#a57342');rect(572,18,52,99,'#382a27');for(let i=0;i<3;i++)rect(578,24+i*29,40,4,'#724c32');rect(608,70,5,5,'#ffda82');rect(592,131,24,32,'#7a5237');rect(594,134,20,26,'#8c623d');rect(594,144,20,3,'#4f3727');rect(594,154,20,3,'#4f3727');
+ // Kontuar i półki.
+ rect(22,101,524,55,'#322823');rect(26,104,514,18,'#835938');for(let i=0;i<16;i++){let x=38+i*30;rect(x,105,14,11,['#c38b3d','#88afb0','#a75557','#cfb46c'][i%4]);rect(x+3,102,7,4,'#dccb9d')}rect(32,126,500,8,'#412e24');for(let i=0;i<14;i++){let x=42+i*34;rect(x,127,10,18,['#8fb2bd','#d0715b','#e0c26f','#86af8f'][i%4]);rect(x+2,123,6,5,'#f0e6c1')}
+ rect(20,148,526,18,'#c18c52');rect(23,162,521,21,'#6c462e');rect(25,169,513,4,'#4c332a');for(let x=48;x<525;x+=60)rect(x,178,7,6,'#4c342d');
+ for(let x of [120,240,360,480]){rect(x,183,18,12,'#6d5138');rect(x+3,195,12,5,'#3a2d28')}
+ // Lampy i ich poświata.
+ for(let x of [170,350,524]){rect(x,0,3,23,'#c7a76d');rect(x-8,23,18,4,'#deb667');rect(x-11,27,24,9,'#ffda88');rect(x-6,36,14,3,'#a67643');ctx.fillStyle=`rgba(255,224,128,${.16+.08*Math.sin(t*2+x)})`;ctx.fillRect(Math.round(x-24),38,48,26)}
+ // Barmani za kontuarem.
+ for(let i=0;i<Math.min(7,g.staff.bartenders);i++){const x=92+i*59;drawBartender(ctx,x,130+Math.sin(t*2.3+i)*1.6,25+i%3)}
+ // Stoliki, krzesła, świece i kufle.
+ const tableXY=[];for(let i=0;i<12;i++){const col=i%4,row=Math.floor(i/4),x=83+col*153,y=248+row*70;tableXY.push([x,y]);if(i+roomIndex*12>=g.staff.tables){rect(x-28,y-12,58,29,'#495357');rect(x-26,y-10,54,25,'#3c494e');rect(x-3,y-2,7,7,'#6d7977');continue;}shade(x-34,y+16,68,8,.16);rect(x-42,y-7,12,22,'#43312c');rect(x+30,y-7,12,22,'#43312c');rect(x-12,y-29,24,10,'#43312c');rect(x-12,y+19,24,10,'#43312c');rect(x-32,y-6,64,34,'#342d2a');rect(x-28,y-12,58,27,'#94623d');rect(x-23,y-9,50,4,'#d4a36b');rect(x-26,y+7,54,5,'#67482f');rect(x-3,y-4,8,9,'#ded8b0');candle(x,y-2,i);const mugSpots=[[x-16,y-6],[x+14,y-6],[x-16,y+12],[x+14,y+12]];for(const m of tableSeats[i])mug(mugSpots[m][0],mugSpots[m][1])}
+ // Ruch gości i kolejki.
+ const people=[];if(roomIndex===0)g.queue.slice(0,16).forEach((q,i)=>{const dest=[510-(i%10)*44,196+Math.floor(i/10)*29];people.push({id:'q'+q.id,x:dest[0],y:dest[1],sp:26+(q.id%3),order:q.r,variant:q.id%8})});
+ seated.forEach(q=>{const localSeat=q.seat-roomIndex*48;const xy=tableXY[Math.floor(localSeat/4)];if(!xy||localSeat<0||localSeat>=48)return;const seat=localSeat%4;people.push({id:'s'+q.id,x:xy[0]+(seat%2?43:-43),y:xy[1]+(seat<2?-21:29),sp:25+q.id%3,order:q.r,variant:q.id%8})});
+ // Kelnerzy krążący po sali.
+ const waiterRoute=[[315,190],[315,225],[114,225],[114,315],[315,315],[520,315],[520,225],[315,225],[315,380]];for(let i=0;i<Math.min(2,g.staff.waiters);i++){const p=pathPoint(waiterRoute,(t*.07+i*.38));drawWaiter(ctx,p[0],p[1]+Math.sin(t*8+i)*1.4,18+i)}
+ const current=new Set();for(const p of people){current.add(p.id);let m=motion.get(p.id);if(!m){m={x:585,y:120};motion.set(p.id,m)}m.x+=(p.x-m.x)*lerpAmt;m.y+=(p.y-m.y)*lerpAmt;const walking=Math.abs(m.x-p.x)+Math.abs(m.y-p.y)>2.5;person(ctx,m.x,m.y,p.sp,walking?Math.sin(t*11+p.x)*1.5:0,'customer',p.variant)}for(const key of motion.keys())if(!current.has(key))motion.delete(key);
+ // Szyld i pasek informacji.
+ rect(6,6,147,19,'#202b31');rect(9,9,141,13,'#67462e');ctx.fillStyle='#fbd69c';ctx.font='bold 10px monospace';ctx.fillText('BAR INC.  ★  PUB',14,19);ctx.fillStyle='#fae9bd';ctx.font='bold 11px monospace';ctx.fillText('Kolejka: '+g.queue.length+'    Barmani: '+g.staff.bartenders+'    Sala: '+(roomIndex+1)+' / '+Math.ceil(g.staff.tables/12),16,445)}
+function drawBartender(ctx,x,y,spriteId){person(ctx,x,y,spriteId,Math.sin(performance.now()/180+spriteId)*.8,'bartender',spriteId%8);const a=Math.round(x),b=Math.round(y);ctx.fillStyle='#fff2c6';ctx.fillRect(a-3,b-2,6,10);ctx.fillStyle='#8d2349';ctx.fillRect(a-10,b+10,20,3);ctx.fillStyle='#ffd98a';ctx.fillRect(a+8,b-7,4,3);ctx.fillStyle='#5ac2b5';ctx.fillRect(a+10,b-11,3,6);ctx.fillStyle='#ffe8a8';ctx.fillRect(a+9,b-12,5,2)}
+function drawWaiter(ctx,x,y,spriteId){person(ctx,x,y,spriteId,0,'waiter',spriteId%8);const a=Math.round(x),b=Math.round(y);ctx.fillStyle='#f0e9c8';ctx.fillRect(a+7,b-8,8,2);ctx.fillStyle='#d5d2bf';ctx.fillRect(a+6,b-6,10,4);ctx.fillStyle='#b87b35';ctx.fillRect(a+8,b-5,3,2);ctx.fillStyle='#efe7bd';ctx.fillRect(a+11,b-5,3,2)}
+function person(ctx,x,y,spriteId,bob,role='customer',variant=0){const px=Math.round(x),py=Math.round(y+bob);ctx.fillStyle='rgba(0,0,0,.22)';ctx.fillRect(px-8,py+10,16,4);
+ const customerPal=[
+  {body:'#b24d4d',trim:'#e9a0a0',pants:'#5f3340',hair:'#5c351f'},
+  {body:'#5279c7',trim:'#9dc1ff',pants:'#334561',hair:'#6f4c2c'},
+  {body:'#4f9a61',trim:'#98d29e',pants:'#375041',hair:'#52341e'},
+  {body:'#a46bc7',trim:'#d2b4f4',pants:'#4f3c68',hair:'#3e2921'},
+  {body:'#d08a35',trim:'#efc27d',pants:'#65472f',hair:'#7a5225'},
+  {body:'#cf658f',trim:'#f3aac3',pants:'#5f3a4a',hair:'#6b4129'},
+  {body:'#4fa3a1',trim:'#9be0d9',pants:'#35595a',hair:'#4b3427'},
+  {body:'#8a9850',trim:'#d4dea1',pants:'#4a5231',hair:'#805b2f'}
+ ];
+ const skinTones=['#f0c7a4','#e2b18a','#c98d63','#9f6848'];
+ let body='#6f82a9',trim='#d5e0f6',pants='#3e4961',hair='#5b3a22',skin=skinTones[spriteId%skinTones.length];
+ if(role==='customer'){const pal=customerPal[variant%customerPal.length];body=pal.body;trim=pal.trim;pants=pal.pants;hair=pal.hair;skin=skinTones[(variant+spriteId)%skinTones.length]}
+ else if(role==='bartender'){body='#b84769';trim='#f4bfd0';pants='#4a2435';hair=['#f0d47a','#8a4f2b','#4d3426'][spriteId%3];skin=skinTones[(spriteId+1)%skinTones.length]}
+ else if(role==='waiter'){body='#467f84';trim='#a9ddd4';pants='#274951';hair=['#d2a06a','#5c3a22','#8d5a35'][spriteId%3];skin=skinTones[(spriteId+2)%skinTones.length]}
+ ctx.fillStyle=pants;ctx.fillRect(px-6,py+1,5,11);ctx.fillRect(px+1,py+1,5,11);ctx.fillStyle='#241d1b';ctx.fillRect(px-6,py+12,5,2);ctx.fillRect(px+1,py+12,5,2);
+ ctx.fillStyle=body;ctx.fillRect(px-9,py-12,18,13);ctx.fillStyle=trim;ctx.fillRect(px-7,py-10,14,4);ctx.fillStyle=skin;ctx.fillRect(px-11,py-11,3,8);ctx.fillRect(px+8,py-11,3,8);
+ if(role==='bartender'){ctx.fillStyle='#fff1cf';ctx.fillRect(px-4,py-7,8,9);ctx.fillStyle='#7a2141';ctx.fillRect(px-9,py,18,2)}
+ if(role==='waiter'){ctx.fillStyle='#e7f6f1';ctx.fillRect(px-5,py-8,10,3);ctx.fillStyle='#26545d';ctx.fillRect(px-9,py,18,2)}
+ ctx.fillStyle=skin;ctx.fillRect(px-6,py-23,12,11);ctx.fillStyle=hair;ctx.fillRect(px-7,py-25,14,5);ctx.fillRect(px-6,py-20,2,4);ctx.fillRect(px+4,py-20,2,4);ctx.fillStyle='#2b1d16';ctx.fillRect(px-3,py-19,2,2);ctx.fillRect(px+1,py-19,2,2);ctx.fillStyle='#d77c78';ctx.fillRect(px-1,py-15,2,1)}
+function frame(ts){drawScene(ts);requestAnimationFrame(frame)}
+function cycle(){let prev=Date.now();setInterval(()=>{const now=Date.now(),dt=Math.min(1,(now-prev)/1000);prev=now;liveStep(dt);dueReset();if(now-lastUI>1000&&!openedModal){g.rateSamples.push({t:now,val:rateBuffer});rateBuffer=0;g.rateSamples=g.rateSamples.filter(x=>now-x.t<60000);g.incomeRate=g.rateSamples.reduce((a,r)=>a+r.val,0)*60/Math.min(60,Math.max(10,(now-g.sessionStart)/1000));lastUI=now;render()}if(now-lastSave>10000){save();lastSave=now}},250)}
+g=load();calcOffline();dueReset();fillOffers();initializeUnlockNotices();render();cycle();requestAnimationFrame(frame);window.addEventListener('barinc:before-update',()=>save());document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='hidden')save()});window.addEventListener('pagehide',save);if(!STORE.getItem(TUTORIAL))setTimeout(intro,500);
+})();
+
+</script><script>if('serviceWorker' in navigator){navigator.serviceWorker.register('./sw.js',{scope:'./'}).catch(()=>{});}</script></body></html>
