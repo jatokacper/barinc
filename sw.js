@@ -1,5 +1,5 @@
-/* Bar Inc. 5.8 - network-first documents, offline fallback, preserved local storage. */
-const CACHE='barinc-v58-balance';
+/* Bar Inc. 5.9 - network-first documents, offline fallback, preserved local storage. */
+const CACHE='barinc-v59-active-goals';
 const ASSETS=['./index.html','./manifest.webmanifest','./icons/icon-180.png','./icons/icon-192.png','./icons/icon-512.png'];
 self.addEventListener('install',event=>{
  event.waitUntil((async()=>{
