@@ -1,6 +1,6 @@
 {
-  "name": "Bar Inc. 6.0 BETA — test ekonomii",
-  "short_name": "Bar Inc. BETA",
+  "name": "Bar Inc. 5.2 — Test kontraktów",
+  "short_name": "Bar Inc. TEST",
   "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",
