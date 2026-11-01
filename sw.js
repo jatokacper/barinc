@@ -1,5 +1,5 @@
-/* Bar Inc. 5.16 - network-first documents, offline fallback, preserved local storage. */
-const CACHE='barinc-v516-renown-contracts';
+/* Bar Inc. 5.17 - network-first documents, offline fallback, preserved local storage. */
+const CACHE='barinc-v517-contract-balance';
 const ASSETS=['./index.html','./manifest.webmanifest','./icons/icon-180.png','./icons/icon-192.png','./icons/icon-512.png'];
 self.addEventListener('install',event=>{
  event.waitUntil((async()=>{
